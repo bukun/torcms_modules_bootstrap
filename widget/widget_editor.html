@@ -6,7 +6,7 @@
     Edit</a></span>
 
 {% elif userinfo.role[0] > '0' %}
-<span class="cmts"><a href="/{{ 'wiki' if kwd['router'] == 'wiki' else 'meta' }}_man/_edit/{{kwd['uid'] }}"
+<span class="cmts"><a href="/{{ 'wiki' if kwd['router'] == 'wiki' else 'meta' }}_man/edit/{{kwd['uid'] }}"
                       class="btn btn-xs btn-warning"><span class="glyphicon glyphicon-pencil"></span>
    {{ _('Help edit') }} </a></span>
 {% end %}
@@ -24,7 +24,7 @@
 
 {% else %}
 
-<span class="cmts"><a href="/{{ 'wiki' if kwd['router'] == 'wiki' else 'meta' }}_man/_edit/{{kwd['uid'] }}"
+<span class="cmts"><a href="/{{ 'wiki' if kwd['router'] == 'wiki' else 'meta' }}_man/edit/{{kwd['uid'] }}"
                       class="btn btn-xs btn-warning">
     <span class="glyphicon glyphicon-pencil"></span>
     {{ _('Help edit') }} </a></span>
