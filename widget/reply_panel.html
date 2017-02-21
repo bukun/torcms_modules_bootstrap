@@ -1,27 +1,27 @@
-
 <form method="post" class="form-horizontal" id="reply_form">
-<div class="form-group">
-<div class="col-sm-10">
+    <div class="form-group">
+        <div class="col-sm-10">
+            {{ _('Let me comment') }}  {{ _('At least 50 characters') }} | {{ _('support MarkDown syntax') }}
+            <span class="red">{{ _('After landing can comment') }}！</span>
 
-{{ _('Let me comment') }}{{ _('At least 50 characters') }} | {{ _('support MarkDown syntax') }}
-<span class="red">{{ _('After landing can comment') }}！</span>
-
-</div>
-</div>
-<div class="form-group">
-<div class="col-sm-10">
-<textarea rows="5" name="cnt_reply" id="cnt_reply" class="form-control"></textarea>
-</div></div>
-<div class="form-group">
-<div class="col-sm-10"><a id="btn_submit_reply" onclick="reply_it('{{uid}}');" class="btn btn-primary btn-small">{{ _('Submit') }}</a>
-</div>
-</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-10">
+            <textarea rows="5" name="cnt_reply" id="cnt_reply" class="form-control"></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-10"><a id="btn_submit_reply" onclick="reply_it('{{uid}}');"
+                                  class="btn btn-primary btn-small">{{ _('Submit') }}</a>
+        </div>
+    </div>
 </form>
 
 <div id="pinglun"></div>
- {{ _('To comment') }}
+{{ _('To comment') }}
 <p style="border-bottom: 1px dashed #dddddd; margin-bottom: 20px">&nbsp;</p>
-     {% set ii = 0 %}
+{% set ii = 0 %}
 {% for reply in replys %}
 
 <div id="del_zan_{{ ii }}" style="font-size: 14px;">
@@ -30,13 +30,13 @@
 
     <p>{{ _('Editor in') }}{{ str(reply.timestamp).split('.')[0] }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         {{ _('a total of') }} <span id="text_zan_{{ ii }}">{{ reply.vote }}</span> {{ _('people agree') }}
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
         {% if (userinfo is None) or ( (userinfo) and ( userinfo.uid != reply.user_id )) %}
         <a class="btn btn-xs btn-primary"
            style="padding:3px 8px; margin-right: 5px"
            onclick="reply_zan('{{ reply.uid }}', {{ ii }} );">
-           {{ _('Vote') }}
+            {{ _('Vote') }}
         </a>
         {% end %}
 
