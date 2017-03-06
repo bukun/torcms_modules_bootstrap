@@ -8,7 +8,7 @@
     </a>
     <span style="font-size: small; color: #5e5e5e"> ({{ rec.count }})</span>
     {% if kwd['with_tag'] == True %}
-    <span class="app_tag"> {% module app_tags(rec.post_id) %}</span>
+    <span class="post_label"> {% module app_tags(rec.post_id) %}</span>
     {% end %}
 </li>
 {% end %}
