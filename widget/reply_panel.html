@@ -28,7 +28,7 @@
     <p><strong>{{ reply.user_name }}</strong></p>
     <p class="listinfo_content"> {% raw unescape(reply.cnt_html) %}</p>
 
-    <p>{{ _('Editor in') }}{{ str(reply.timestamp).split('.')[0] }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <p>{{ _('Editor in') }}&nbsp;&nbsp;  {{ str(reply.date).split('.')[0] }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         {{ _('a total of') }} <span id="text_zan_{{ ii }}">{{ reply.vote }}</span> {{ _('people agree') }}
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
