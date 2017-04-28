@@ -1,6 +1,7 @@
 {% for x in recs %}
 
-<li class="list-group-item"><a href="/{{ kwd['router'] }}/{{ x.uid }}" title="{{x.title}}">{{x.title}}</a>
+<li class="list-group-item"  style="overflow: hidden; text-overflow:ellipsis; white-space: nowrap;">
+    <a href="/{{ kwd['router'] }}/{{ x.uid }}" title="{{x.title}}" >{{x.title}}</a>
     {% if kwd['with_catalog'] %}
     <span class="post_cat">{% module post_catalogs(x.uid) %}</span>
     {% end %}
