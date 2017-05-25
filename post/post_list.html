@@ -6,8 +6,12 @@
         {% else %}
     style="overflow: hidden; text-overflow:ellipsis; white-space: nowrap;"
     {% end %}
-><span class="glyphicon glyphicon-list-alt"></span>
-    <a href="/{{ kwd['router'] }}/{{ x.uid }}" title="{{x.title}}" >{{x.title}}</a>
+>
+    <a href="/{{ kwd['router'] }}/{{ x.uid }}" title="{{x.title}}" >
+        {% if kwd['glyph'] != '' %}
+        <span class="{{ kwd['glyph'] }}"></span>
+        {% end %}
+        &nbsp;&nbsp;{{x.title}}</a>
     {% if kwd['with_catalog'] %}
     <span class="post_cat">{% module post_catalogs(x.uid,'1') %}</span>
     {% end %}
