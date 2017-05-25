@@ -10,6 +10,8 @@
     <a href="/{{ kwd['router'] }}/{{ x.uid }}" title="{{x.title}}" >
         {% if kwd['glyph'] != '' %}
         <span class="{{ kwd['glyph'] }}"></span>
+        {% else %}
+        <span class="glyphicon glyphicon-list-alt"></span>
         {% end %}
         &nbsp;&nbsp;{{x.title}}</a>
     {% if kwd['with_catalog'] %}
