@@ -2,7 +2,7 @@
     {% for x in recs %}
     {% if x.uid.endswith('00') %}
     {% else %}
-    <a href="/category/{{ x.slug }}" title="{{ x.name }}" class="btn btn-primary btn-sm" style="margin-bottom: 5px;color: #fff;">{{ x.name }}</a>
+    <a href="/category/{{ x.slug }}" title="{{ x.name }}" class=" btn-primary btn-sm" style="margin-bottom: 5px;color: #fff;">{{ x.name }}</a>
     {% end %}
     {% end %}
 </li>
