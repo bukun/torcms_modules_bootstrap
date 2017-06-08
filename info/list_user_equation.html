@@ -5,7 +5,7 @@
         {% if 'glyph' in kwd and kwd['glyph'] != '' %}
         <span class="{{ kwd['glyph'] }}"></span>
         {% else %}
-        <span class="glyphicon glyphicon-map-marker"></span>
+        <span class="glyphicon glyphicon-list-alt"></span>
         {% end %}
         {{ rec.post_title }}
         {% if rec.post_id[0] == 'v' %}<span class="badge" style="color:yellow">v</span>{% end %}
