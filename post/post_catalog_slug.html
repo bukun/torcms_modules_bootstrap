@@ -2,15 +2,15 @@
     <div class="panel-heading"> {{ pcatinfo.name }}</div>
     {% for rec in recs %}
     <li class="list-group-item">
-        {%  if order %}
+        {% if order %}
 
         <a href="/catalog/{{ rec.slug }}"> {{ rec.name }} <span
                 style="font-size:0.8em;background-color:#00adef;color:#fff;padding:1px;"> ({{ rec.count }})</span></a>
 
-        {%  else %}
+        {% else %}
         <a href="/category/{{ rec.slug }}"> {{ rec.name }} <span
                 style="font-size:0.8em;background-color:#00adef;color:#fff;padding:1px;"> ({{ rec.count }})</span></a>
-        {%  end %}
+        {% end %}
     </li>
     {% end %}
 

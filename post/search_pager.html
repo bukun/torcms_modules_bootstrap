@@ -11,10 +11,21 @@
         <a class="{0}" href="/search/{{ cat_slug }}/{{ page_current - 1 }}">{{ _('Previous Page') }}</a>
     </li>
     {% end %}
+    {% set cur_num = page_current
+    if cur_num > 5:
+        cur_num = cur_num - 4
+    else:
+        cur_num = 1
+    if pager_num > 10 and cur_num < pager_num - 10:
+        show_num = cur_num + 10
 
-    {% for page_index in range(0, pager_num ) %}
-    <li class="{% if page_current == page_index + 1 %}active{% end %}">
-        <a href="/search/{{ cat_slug }}/{{ page_index + 1 }}">{{ page_index + 1}}</a></li>
+    else:
+        show_num = pager_num + 1
+    %}
+    {% for page_index in range(cur_num, show_num ) %}
+
+    <li class="{% if page_current == page_index  %}active{% end %}">
+        <a href="/search/{{ cat_slug }}/{{ page_index  }}">{{ page_index }}</a></li>
     {% end %}
 
     {% if kwd['page_next'] %}
