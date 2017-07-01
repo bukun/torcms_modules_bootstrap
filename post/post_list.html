@@ -3,17 +3,25 @@
 <li class="list-group-item"
 
     {% if kwd['with_date']  or kwd['with_catalog'] %}
-        {% else %}
-    style="overflow: hidden; text-overflow:ellipsis; white-space: nowrap;"
+{% else %}
+style="overflow: hidden; text-overflow:ellipsis; white-space: nowrap;"
+{% end %}
+>
+<a href="/{{ kwd['router'] }}/{{ x.uid }}" title="{{x.title}}">
+    {% if 'glyph' in kwd and kwd['glyph'] != '' %}
+    <span class="{{ kwd['glyph'] }}"></span>
+    {% elif 'kind' in kwd and kwd['kind'] == 'm' %}
+    <span class="glyphicon glyphicon-map-marker"></span>
+    {% else %}
+    <span class="glyphicon glyphicon-list-alt"></span>
     {% end %}
-><span class="glyphicon glyphicon-list-alt"></span>
-    <a href="/{{ kwd['router'] }}/{{ x.uid }}" title="{{x.title}}" >{{x.title}}</a>
-    {% if kwd['with_catalog'] %}
-    <span class="post_cat">{% module post_catalogs(x.uid,'1') %}</span>
-    {% end %}
-    {% if kwd['with_date'] %}
-    <em class="date">{{ str(x.date)[:-15]}}</em>
-    {% end %}
+    &nbsp;&nbsp;{{x.title}}</a>
+{% if kwd['with_catalog'] %}
+<span class="post_cat">{% module post_catalogs(x.uid,'1') %}</span>
+{% end %}
+{% if kwd['with_date'] %}
+<em class="date">{{ str(x.date)[:-15]}}</em>
+{% end %}
 </li>
 
 {% end %}

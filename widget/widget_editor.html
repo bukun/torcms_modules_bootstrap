@@ -18,8 +18,13 @@
 
 
 {% if userinfo.role[1] >= '3' %}
-<span class="cmts"><a href="/post/_edit_kind/{{ kwd['uid']  }}"
+<span class="cmts">
+    <a href="/post/_edit_kind/{{ kwd['uid']  }}"
                       class="btn btn-xs btn-info">{{ _('Reclassify') }}</a></span>
+
+<span class="cmts">
+    <a href="/{{kwd['router']}}/_delete/{{ kwd['uid'] }}"
+                      class="btn btn-xs btn-danger">{{ _('Delete') }}</a></span>
 {% end %}
 
 {% else %}
