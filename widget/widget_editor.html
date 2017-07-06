@@ -1,4 +1,28 @@
 {% if userinfo %}
+<script>
+    function info_del(info_id, info_router) {
+        var statu = confirm("Are you sure to delete the current data?");
+        if (!statu) {
+            return false;
+        }
+        $.ajax({
+            type: 'get',
+            url: "/" + info_router + "/_delete/" + info_id,
+
+            success: function (result) {
+                alert('Delete Successful!'); 
+                self.location=document.referrer;
+
+            },
+            error: function () {
+                alert('Delete Failed!');
+            }
+        });
+    }
+</script>
+
+
+
 
 {% if userinfo.role[1] > '1' %}
 <span class="cmts"><a href="/{{kwd['router']}}/_edit/{{ kwd['uid']  }}" class="btn btn-xs btn-warning">
@@ -23,7 +47,7 @@
                       class="btn btn-xs btn-info">{{ _('Reclassify') }}</a></span>
 
 <span class="cmts">
-    <a href="/{{kwd['router']}}/_delete/{{ kwd['uid'] }}"
+    <a onclick="info_del('{{kwd['uid']}}','{{kwd['router']}}')"
                       class="btn btn-xs btn-danger">{{ _('Delete') }}</a></span>
 {% end %}
 
