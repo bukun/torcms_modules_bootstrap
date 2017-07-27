@@ -1,5 +1,8 @@
 <div class="panel-heading">
-    {{ pcatinfo.name }}
+    {% if 'glyph' in kwd and kwd['glyph'] != '' %}
+        <span class="{{ kwd['glyph'] }}"></span>
+        {% else %}
+        {% end %} {{ pcatinfo.name }}
 </div>
 
 

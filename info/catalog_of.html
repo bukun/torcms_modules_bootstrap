@@ -1,5 +1,13 @@
 <div class="panel-heading">
-    <a href="/filter/{{ pcatinfo.uid }}" class="flbt">{{ pcatinfo.name }}</a>
+    <a href="/filter/{{ pcatinfo.uid }}" class="flbt">
+        {% if 'glyph' in kwd and kwd['glyph'] != '' %}
+        <span class="{{ kwd['glyph'] }}"></span>
+        {% else %}
+        {% end %}
+
+        {{ pcatinfo.name }}
+
+    </a>
 </div>
 
 <ul class="list-group">

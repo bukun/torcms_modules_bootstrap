@@ -1,7 +1,14 @@
 <ul class="list-group">
-    <div class="panel-heading"> {{ pcatinfo.name }}</div>
+    <div class="panel-heading">
+        {% if 'glyph' in kwd and kwd['glyph'] != '' %}
+        <span class="{{ kwd['glyph'] }}"></span>
+        {% else %}
+        {% end %} {{ pcatinfo.name }}
+    </div>
     {% for rec in recs %}
     <li class="list-group-item">
+
+
         {% if order %}
 
         <a href="/catalog/{{ rec.slug }}"> {{ rec.name }} <span
