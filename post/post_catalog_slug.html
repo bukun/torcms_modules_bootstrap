@@ -7,16 +7,18 @@
     </div>
     {% for rec in recs %}
     <li class="list-group-item">
-
-
         {% if order %}
-
-        <a href="/catalog/{{ rec.slug }}"> {{ rec.name }} <span
-                style="font-size:0.8em;background-color:#00adef;color:#fff;padding:1px;"> ({{ rec.count }})</span></a>
-
+        <a href="/catalog/{{ rec.slug }}"> {{ rec.name }}
+            <span style="font-size:0.8em;background-color:#00adef;color:#fff;padding:1px;">
+            ({{ rec.count }})
+        </span>
+        </a>
         {% else %}
-        <a href="/category/{{ rec.slug }}"> {{ rec.name }} <span
-                style="font-size:0.8em;background-color:#00adef;color:#fff;padding:1px;"> ({{ rec.count }})</span></a>
+        <a href="/category/{{ rec.slug }}"> {{ rec.name }}
+            <span style="font-size:0.8em;background-color:#00adef;color:#fff;padding:1px;">
+                ({{ rec.count }})
+            </span>
+        </a>
         {% end %}
     </li>
     {% end %}

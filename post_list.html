@@ -1,5 +1,4 @@
 {% for x in recs %}
-
 <li class="list-group-item"><a href="/post/{{ x.uid }}" title="{{x.title}}">{{x.title}}</a>
     {% if kwd['with_catalog'] %}
     <span class="post_cat">{% module post_catalogs(x.uid,'1') %}</span>
@@ -8,5 +7,4 @@
     <em class="date">{{ str(x.date)[:-9]}}</em>
     {% end %}
 </li>
-
 {% end %}

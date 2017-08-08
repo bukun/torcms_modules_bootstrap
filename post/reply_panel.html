@@ -1,5 +1,4 @@
 <form id="reply_form" method="post" class="pure-form pure-form-aligned">
-
     <div class="pure-control-group">
         {{ _('Let me comment') }}
     </div>
@@ -8,26 +7,16 @@
     </div>
     <div class="pure-control-group">
         <a id="btn_submit_reply" onclick="reply_it('{{ sig }}', '{{ uid }}');" class="pure-button pure-button-primary">
-            {{ _('Submit') }}</a>
+            {{ _('Submit') }}
+        </a>
     </div>
-
 </form>
-
 <div id="pinglun"></div>
 {{ _('To comment') }}
-
-
 <p style="border-bottom: 1px dashed #dddddd; margin-bottom: 20px">&nbsp;</p>
-
-
 {% set ii = 0 %}
-
-
 {% for reply in replys %}
-
 <div id="del_zan_{{ ii }}" style="font-size: 14px;">
-
-
     <p><strong>{{ reply.reply_id.user_name }}</strong></p>
 
     <p>{% raw unescape(reply.reply_id.cnt_html) %}</p>
@@ -35,8 +24,7 @@
     <p>{{ _('Editor in') }}{{ str(reply.reply_id.date).split('.')[0] }}
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         {{ _('a total of') }} <span id="text_zan_{{ ii }}">{{ reply.reply_id.vote }}</span> {{ _('people agree') }}
-     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         {% if (userinfo is None) or ( (userinfo is not None ) and ( userinfo.uid != reply.reply_id.uid )) %}
         <a class="btn btn-primary"
            style="padding:3px 8px; margin-right: 5px"
@@ -44,20 +32,15 @@
             {{ _('Vote') }}
         </a>
         {% end %}
-
-
         {% if userinfo is not None and ( userinfo.uid == reply.reply_id.uid or userinfo.role[4] == '1') %}
-
         <a class="btn btn-primary" style="padding:3px 8px;"
            onclick="reply_del('post', '{{ reply.reply_id.uid }}', {{ ii }} );">
             {{ _('Delete') }}
         </a>
         {% end %}
-
     </p>
 
     <p style="border-bottom: 1px dashed #dddddd; margin-bottom: 20px">&nbsp;</p>
-
 </div>
 {% set ii = ii + 1 %}
 {% end %}

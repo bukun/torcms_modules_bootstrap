@@ -1,8 +1,6 @@
 {% for x in recs %}
 <li class="list-group-item">
-
     <a href="/{{ kwd['router'] }}/{{ x.uid }}" title="{{ x.title }}">
-
         {% if 'glyph' in kwd and kwd['glyph'] != '' %}
         <span class="{{ kwd['glyph'] }}"></span>
         {% else %}
@@ -11,7 +9,6 @@
         {{ x.title }}
         {% if x.uid[0] == 'v' %}<span class="badge" style="color:yellow">v</span>{% end %}
     </a>
-
     {% if kwd['with_tag'] == True %}
     <span class="post_label">{% module app_tags(x.uid) %}</span>
     {% end %}

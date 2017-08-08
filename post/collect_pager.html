@@ -1,5 +1,4 @@
 <ul class="pagination">
-
     {% if kwd['page_home'] %}
     <li>
         <a class="{0}" href="/collect/list/1">{{ _('Home') }} </a>
@@ -25,7 +24,6 @@
     %}
     {% for page_index in range(cur_num, show_num ) %}
 
-
     <li class="{% if page_current == page_index %}active{% end %}">
         <a href="/collect/list/{{ page_index }}">{{ page_index }}</a></li>
     {% end %}
@@ -35,7 +33,6 @@
         <a class="{0}" href="/collect/list/{{ page_current +1 }}">{{ _('Next page') }}</a>
     </li>
     {% end %}
-
 
     {% if kwd['page_end'] %}
     <li>

@@ -1,5 +1,4 @@
 <ul class="pagination">
-
     {% if kwd['page_home'] %}
     <li>
         <a class="{0}" href="/label/{{kind}}/{{ cat_slug }}/1">{{ _('Home') }} </a>
@@ -33,7 +32,6 @@
         <a class="{0}" href="/label/{{kind}}/{{ cat_slug }}/{{ page_current +1 }}">{{ _('Next page') }}</a>
     </li>
     {% end %}
-
 
     {% if kwd['page_end'] %}
     <li>

@@ -4,10 +4,12 @@
     <div class="panel-heading"> {{ rec.name }}</div>
     {% else %}
     <li class="list-group-item">
-        <a href="/filter/{{ rec.uid }}"> {{ rec.name }} <span
-                style="font-size:0.8em;background-color:#00adef;color:#fff;padding:1px;"> ({{ rec.count }})</span></a>
+        <a href="/filter/{{ rec.uid }}"> {{ rec.name }}
+            <span style="font-size:0.8em;background-color:#00adef;color:#fff;padding:1px;">
+                ({{ rec.count }})
+            </span>
+        </a>
     </li>
     {% end %}
     {% end %}
-
 </ul>

@@ -1,39 +1,27 @@
 <div id="userInfo">
-
 <span class="red">
 {% raw userinfo.user_name %}
 </span>
-
-
-    <span>
+<span>
 {% if userinfo.is_credit == 1 %}
     {{ _('Certified') }}
-
 {% else %}
     {{ _('Not certified') }}
-
 {% end %}
 </span>
-    <span>
+<span>
 {% if userinfo.is_vip == 1 %}
         {{ _('VIP user') }}
-
 {% else %}
         {{ _('Ordinary user') }}
-
 {% end %}
-    </span>
-
-
-    <span>{{ _('Release times') }}:</span>
-    <span class="red">{{ uservip.publish_num }}</span>
-
-    <span>{{ _('Refresh times') }}:</span>
-    <span class="red">{{ uservip.refresh_num }}</span>
-
-    <span>{{ _('Promotion times') }}:</span>
-    <span class="red">{{ uservip.tuiguang_num }}</span>
-    <span>{{ _('Appointment times') }}:</span>
-    <span class="red">{{ uservip.yuyue_num }}</span>
-
+</span>
+<span>{{ _('Release times') }}:</span>
+<span class="red">{{ uservip.publish_num }}</span>
+<span>{{ _('Refresh times') }}:</span>
+<span class="red">{{ uservip.refresh_num }}</span>
+<span>{{ _('Promotion times') }}:</span>
+<span class="red">{{ uservip.tuiguang_num }}</span>
+<span>{{ _('Appointment times') }}:</span>
+<span class="red">{{ uservip.yuyue_num }}</span>
 </div>

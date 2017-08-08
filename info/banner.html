@@ -1,7 +1,6 @@
 <div class="pure-menu pure-menu-open pure-menu-horizontal topmenu">
     <ul>
         <li><a href="/">{{ _('Home') }}</a></li>
-
         {% for list in kwd['parentlist'] %}
         {% if kwd['parentid'] == list['catid'] %}
         <li class="uuuu">
@@ -10,6 +9,5 @@
             {% end %}
             <a href="/filter/{{ list['catid'] }}">{{ list['catname'] }}</a></li>
         {% end %}
-
     </ul>
 </div>

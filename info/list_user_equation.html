@@ -1,5 +1,4 @@
 {% for rec in recs %}
-
 <li class="list-group-item">
     <a href="/{{kwd['router']}}/{{ rec.post_id }}">
         {% if 'glyph' in kwd and kwd['glyph'] != '' %}
@@ -15,6 +14,5 @@
     <span class="post_cat"> {% module app_tags(rec.post_id) %}</span>
     {% end %}
 </li>
-
 {% end %}
 
