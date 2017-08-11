@@ -44,7 +44,7 @@
     {% end %}
     >
 
-    {% if kwd['spa'] %}
+    {% if 'spa' in kwd and kwd['spa'] %}
     <a onclick="load_post('{{x.uid}}')" title="{{x.title}}" style="cursor:pointer;">
     {% else %}
     <a href="/{{ kwd['router'] }}/{{ x.uid }}" title="{{x.title}}" target="_blank">
