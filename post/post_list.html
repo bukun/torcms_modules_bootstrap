@@ -1,25 +1,65 @@
-{% for x in recs %}
-<li class="list-group-item"
-    {% if kwd['with_date']  or kwd['with_catalog'] %}
-{% else %}
-style="overflow: hidden; text-overflow:ellipsis; white-space: nowrap;"
-{% end %}
->
-<a href="/{{ kwd['router'] }}/{{ x.uid }}" title="{{x.title}}" target="_blank">
-    {% if 'glyph' in kwd and kwd['glyph'] != '' %}
-    <span class="{{ kwd['glyph'] }}"></span>
-    {% elif 'kind' in kwd and kwd['kind'] == 'm' %}
-    <span class="glyphicon glyphicon-map-marker"></span>
-    {% else %}
-    <span class="glyphicon glyphicon-list-alt"></span>
-    {% end %}
-    &nbsp;&nbsp;{{x.title}}</a>
-{% if kwd['with_catalog'] %}
-<span class="post_cat">{% module post_catalogs(x.uid,'1') %}</span>
-{% end %}
-{% if kwd['with_date'] %}
-<em class="date">{{ str(x.date)[:-15]}}</em>
-{% end %}
-</li>
 
-{% end %}
+<script>
+
+    function uv(result) {
+        $.each(result, function (i, field) {
+            alert(i);
+            if (i == 'code') {
+                // window.location.href = '/page/' + field;
+            }
+            else if (i == "uid") {
+
+                $("#wiki_edit_link").html('<a href="/page/_edit/' + field + '">Edit</a>');
+            }
+            else if (i == 'time_update') {
+                var date = new Date(field * 1000);
+                $("#wiki_time_update").html(date.getFullYear() + '-' + date.getMonth() + '-' + date.getDay());
+            }
+            else {
+                $("#wiki_cnt_html" ).html(field);
+            }
+        });
+    }
+
+    function load_post(post_id) {
+
+        $.getJSON("/post_j/" + post_id, function (result) {
+            alert(result);
+            uv(result);
+
+        })
+    }
+</script>
+
+
+    {% for x in recs %}
+    <li class="list-group-item"
+        {% if kwd['with_date']  or kwd['with_catalog'] %}
+    {% else %}
+    style="overflow: hidden; text-overflow:ellipsis; white-space: nowrap;"
+    {% end %}
+    >
+
+    {% if kwd['spa'] %}
+    <a onclick="load_post({{x.uid}})" title="{{x.title}}">
+    {% else %}
+    <a href="/{{ kwd['router'] }}/{{ x.uid }}" title="{{x.title}}" target="_blank">
+    {% end %}
+
+        {% if 'glyph' in kwd and kwd['glyph'] != '' %}
+        <span class="{{ kwd['glyph'] }}"></span>
+        {% elif 'kind' in kwd and kwd['kind'] == 'm' %}
+        <span class="glyphicon glyphicon-map-marker"></span>
+        {% else %}
+        <span class="glyphicon glyphicon-list-alt"></span>
+        {% end %}
+        &nbsp;&nbsp;{{x.title}}</a>
+    {% if kwd['with_catalog'] %}
+    <span class="post_cat">{% module post_catalogs(x.uid,'1') %}</span>
+    {% end %}
+    {% if kwd['with_date'] %}
+    <em class="date">{{ str(x.date)[:-15]}}</em>
+    {% end %}
+    </li>
+    {% end %}
+
