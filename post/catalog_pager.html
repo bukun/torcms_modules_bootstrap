@@ -1,13 +1,13 @@
 <ul class="pagination">
     {% if kwd['page_home'] %}
     <li>
-        <a class="{0}" href="/category/{{ cat_slug }}/1?tag={{ kwd['tag'] }}">{{ _('Home') }} </a>
+        <a class="{0}" href="/category/{{ cat_slug }}/1?tag={{ kwd['tag'] if 'tag' in kwd else '' }}">{{ _('Home') }} </a>
     </li>
     {% end %}
 
     {% if kwd['page_pre'] %}
     <li>
-        <a class="{0}" href="/category/{{ cat_slug }}/{{ page_current - 1 }}?tag={{ kwd['tag'] }}">{{ _('Previous page') }}</a>
+        <a class="{0}" href="/category/{{ cat_slug }}/{{ page_current - 1 }}?tag={{ kwd['tag'] if 'tag' in kwd else ''  }}">{{ _('Previous page') }}</a>
     </li>
     {% end %}
     {% set cur_num = page_current
@@ -23,18 +23,18 @@
     %}
     {% for page_index in range(cur_num, show_num ) %}
     <li class="{% if page_current == page_index %}active{% end %}">
-        <a href="/category/{{ cat_slug }}/{{ page_index }}?tag={{ kwd['tag'] }}">{{ page_index }}</a></li>
+        <a href="/category/{{ cat_slug }}/{{ page_index }}?tag={{ kwd['tag'] if 'tag' in kwd else ''  }}">{{ page_index }}</a></li>
     {% end %}
 
     {% if kwd['page_next'] %}
     <li>
-        <a class="{0}" href="/category/{{ cat_slug }}/{{ page_current +1 }}?tag={{ kwd['tag'] }}">{{ _('Next page') }}</a>
+        <a class="{0}" href="/category/{{ cat_slug }}/{{ page_current +1 }}?tag={{ kwd['tag'] if 'tag' in kwd else ''  }}">{{ _('Next page') }}</a>
     </li>
     {% end %}
 
     {% if kwd['page_end'] %}
     <li>
-        <a class="{0}" href="/category/{{ cat_slug }}/{{ pager_num }}?tag={{ kwd['tag'] }}"> {{ _('End') }}</a>
+        <a class="{0}" href="/category/{{ cat_slug }}/{{ pager_num }}?tag={{ kwd['tag'] if 'tag' in kwd else ''  }}"> {{ _('End') }}</a>
     </li>
     {% end %}
 </ul>
