@@ -1,17 +1,17 @@
 <div id="banner-example-1" class="light">
     <ul>
-        {% if post_info.infor['mymps_img'][0] != "" %}
+        {% if postinfo.infor['mymps_img'][0] != "" %}
         <li data-transition="fade">
-            <img src="{{ post_info.infor['mymps_img'][0] }}"
-                 data-thumb="{{ post_info.infor['mymps_img'][0] }}"
-                 data-thumb_bw="{{ post_info.infor['mymps_img'][0] }}"/>
+            <img src="{{ postinfo.infor['mymps_img'][0] }}"
+                 data-thumb="{{ postinfo.infor['mymps_img'][0] }}"
+                 data-thumb_bw="{{ postinfo.infor['mymps_img'][0] }}"/>
         </li>
         {% else %}
         <div style="width:270px; height:200px;border:1px solid #999;text-align:center;line-height:200px">
             {{ _('No picture') }}
         </div>
         {% end %}
-        {% for x in post_info.infor['mymps_img'][1:] %}
+        {% for x in postinfo.infor['mymps_img'][1:] %}
         {% if x != "" %}
         <li data-transition="slide"><img src="{{ x }}" data-thumb="{{ x }}" data-thumb_bw="{{ x }}"/>
         </li>
