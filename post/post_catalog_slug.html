@@ -1,9 +1,11 @@
 <ul class="list-group">
     <div class="panel-heading">
-        {% if 'glyph' in kwd and kwd['glyph'] != '' %}
-        <span class="{{ kwd['glyph'] }}"></span>
-        {% else %}
-        {% end %} {{ pcatinfo.name }}
+        <a href="/category/{{ pcatinfo.slug }}" class="flbt">
+            {% if 'glyph' in kwd and kwd['glyph'] != '' %}
+            <span class="{{ kwd['glyph'] }}"></span>
+            {% else %}
+            {% end %} {{ pcatinfo.name }}
+        </a>
     </div>
     {% for rec in recs %}
     <li class="list-group-item">
