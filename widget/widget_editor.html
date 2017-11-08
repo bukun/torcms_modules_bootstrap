@@ -59,10 +59,11 @@
 {% end %}
 
 {% if userinfo.role[1] >= '3' %}
+{% if kwd['router'] == 'post' or kwd['router'] == 'info'   %}
 <span class="cmts">
     <a href="/post/_edit_kind/{{ kwd['uid']  }}" class="btn btn-xs btn-info">{{ _('Reclassify') }}</a>
 </span>
-
+{% end %}
 <span class="cmts">
     <a onclick="info_del('{{kwd['uid']}}','{{kwd['router']}}','{{kwd['catid']}}')" class="btn btn-xs btn-danger">
         {{ _('Delete') }}
