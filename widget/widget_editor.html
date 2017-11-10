@@ -6,10 +6,11 @@
             return false;
         }
         var AjaxUrl = "/" + info_router + "/j_delete/" + info_id;
-        alert('Delete Successful!');
+
         $.getJSON(AjaxUrl, function (Json) {
             var obj = eval(Json);
             if (obj.del_info == 1) {
+                alert('Delete Successful!');
                 if (obj.kind == '1' || obj.kind == 'm' || obj.kind == 'i' || obj.kind == 's') {
                     router = "category"
                     catid = obj.cat_slug
