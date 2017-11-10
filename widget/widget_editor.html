@@ -1,36 +1,33 @@
 {% if userinfo %}
 <script>
-    function info_del(info_id, info_router, catid) {
+    function info_del(info_id, info_router) {
         var statu = confirm("Are you sure to delete the current data?");
         if (!statu) {
             return false;
         }
-        $.ajax({
-            type: 'get',
-            url: "/" + info_router + "/delete/" + info_id,
-
-            success: function (result) {
-                alert('Delete Successful!');
-
-                if (info_router == 'post' || info_router == 'map' || info_router == 'blog') {
+        var AjaxUrl = "/" + info_router + "/j_delete/" + info_id;
+        alert('Delete Successful!');
+        $.getJSON(AjaxUrl, function (Json) {
+            var obj = eval(Json);
+            if (obj.kind == '1' || obj.kind == 'm' || obj.kind == 'i') {
                     router = "category"
+                    catid = obj.cat_slug
                 }
                 else {
                     router = "filter"
-                }
-                if (catid) {
-                    window.location.href = '/' + router + '/' + catid;
-                }
-                else {
-                    self.location = document.referrer;
+                    catid = obj.cat_id
                 }
 
-
-            },
-            error: function () {
-                alert('Delete Failed!');
+            if (catid != '') {
+                window.location.href = '/' + router + '/' + catid;
             }
+            else {
+                self.location = document.referrer;
+            }
+
         });
+
+
     }
 </script>
 
@@ -65,7 +62,7 @@
 </span>
 {% end %}
 <span class="cmts">
-    <a onclick="info_del('{{kwd['uid']}}','{{kwd['router']}}','{{kwd['catid']}}')" class="btn btn-xs btn-danger">
+    <a onclick="info_del('{{kwd['uid']}}','{{kwd['router']}}')" class="btn btn-xs btn-danger">
         {{ _('Delete') }}
     </a>
 </span>
