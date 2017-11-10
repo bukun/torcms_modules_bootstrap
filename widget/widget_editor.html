@@ -9,7 +9,7 @@
         alert('Delete Successful!');
         $.getJSON(AjaxUrl, function (Json) {
             var obj = eval(Json);
-            if (obj.kind == '1' || obj.kind == 'm' || obj.kind == 'i') {
+            if (obj.kind == '1' || obj.kind == 'm' || obj.kind == 'i' || obj.kind == 's') {
                     router = "category"
                     catid = obj.cat_slug
                 }
