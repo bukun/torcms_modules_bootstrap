@@ -37,50 +37,53 @@
     }
 </script>
 
+                        <div class="btn-group">
+
 {% if userinfo.role[1] > '1' %}
-<span class="cmts">
+
     <a href="/{{kwd['router']}}/_edit/{{ kwd['uid']  }}" class="btn btn-xs btn-warning">
         <span class="glyphicon glyphicon-pencil"></span>
         {{ _('Edit') }}
     </a>
-</span>
+
 
 {% elif userinfo.role[0] > '0' %}
-<span class="cmts">
+
     <a href="/{{ 'wiki' if kwd['router'] == 'wiki' else 'meta' }}_man/edit/{{kwd['uid'] }}"
        class="btn btn-xs btn-warning"><span class="glyphicon glyphicon-pencil"></span>
         {{ _('Help edit') }}
     </a>
-</span>
+
 {% end %}
 
 {% if userinfo.role[1] >= '2' %}
-<span class="cmts">
+
     <a href="/{{ 'wiki' if kwd['router'] == 'wiki' else 'meta' }}_man/view/{{ kwd['uid']  }}"
        class="btn btn-xs btn-danger"> {{ _('Review') }}</a>
-</span>
+
 {% end %}
 
 {% if userinfo.role[1] >= '3' %}
 {% if kwd['router'] == 'post' or kwd['router'] == 'info'   %}
-<span class="cmts">
+
     <a href="/post/_edit_kind/{{ kwd['uid']  }}" class="btn btn-xs btn-info">{{ _('Reclassify') }}</a>
-</span>
+
 {% end %}
-<span class="cmts">
     <a onclick="info_del('{{kwd['uid']}}','{{kwd['router']}}')" class="btn btn-xs btn-danger">
         {{ _('Delete') }}
     </a>
-</span>
+
 {% end %}
 
+</div>
 {% else %}
+                        <div class="btn-group">
 
-<span class="cmts">
     <a href="/{{ 'wiki' if kwd['router'] == 'wiki' else 'meta' }}_man/edit/{{kwd['uid'] }}"
        class="btn btn-xs btn-warning">
         <span class="glyphicon glyphicon-pencil"></span>
         {{ _('Help edit') }}
     </a>
-</span>
+
+</div>
 {% end %}
