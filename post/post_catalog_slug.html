@@ -1,6 +1,10 @@
 <ul class="list-group">
     <div class="panel-heading">
+        {% if order %}
+        <a href="/catalog/{{ pcatinfo.slug }}" class="flbt">
+        {% else %}
         <a href="/category/{{ pcatinfo.slug }}" class="flbt">
+         {% end %}
             {% if 'glyph' in kwd and kwd['glyph'] != '' %}
             <span class="{{ kwd['glyph'] }}"></span>
             {% else %}
