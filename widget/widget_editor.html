@@ -67,7 +67,7 @@
 {% end %}
 
 {% if userinfo.role[1] >= '3' %}
-{% if kwd['router'] == 'post' or kwd['router'] == 'info'   %}
+{% if kwd['router'] != 'map' %}
 
     <a href="/post/_edit_kind/{{ kwd['uid']  }}" class="btn btn-xs btn-info">{{ _('Reclassify') }}</a>
 
