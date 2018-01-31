@@ -1,0 +1,12 @@
+{% if user_collect != None %}
+<button class="btn btn-primary btn-xs">
+    <span style="color: yellow" class="glyphicon glyphicon-heart-empty"></span>
+    <span style="color: yellow">{{ _('Already collected') }}</span>
+</button>
+
+{% else %}
+<button id="act_collect" class="btn btn-primary btn-xs">
+    <span id="icon_collect" class="glyphicon glyphicon-heart-empty"></span>
+    <span id="text_collect">{{ _('Collection') }}</span>
+</button>
+{% end %}
