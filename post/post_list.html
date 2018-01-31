@@ -43,9 +43,9 @@
 
 
 {% if kwd['with_date'] %}
-<li class="list-group-item col-sm-12">
-    <em class="date col-sm-3">{{ datetime.datetime.fromtimestamp(x.time_update).strftime('%Y-%m-%d') }}</em>
-    <span class="col-sm-9" style="overflow: hidden; text-overflow:ellipsis; white-space: nowrap; display: block">
+<li class="list-group-item " style="width: 100%; float:left;">
+    <em class="date" style=" width:23%;float: left">{{ datetime.datetime.fromtimestamp(x.time_update).strftime('%Y-%m-%d') }}</em>
+    <span style="overflow: hidden; text-overflow:ellipsis; white-space: nowrap; display: block; width: 77%; float:left;">
    <a href="/{{ kwd['router'] }}/{{ x.uid }}" title="{{x.title}}">
         &nbsp;&nbsp;{{x.title}}
    </a>

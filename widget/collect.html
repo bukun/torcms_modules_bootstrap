@@ -1,4 +1,4 @@
-{% if user_collect != None %}
+{% if user_collect and (user_collect != None) %}
 <button class="btn btn-primary btn-xs">
     <span style="color: yellow" class="glyphicon glyphicon-heart-empty"></span>
     <span style="color: yellow">{{ _('Already collected') }}</span>
