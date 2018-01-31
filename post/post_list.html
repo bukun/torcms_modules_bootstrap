@@ -37,18 +37,37 @@
 
 
     {% for x in recs %}
-    <li class="list-group-item"
-        {% if kwd['with_date']  or kwd['with_catalog'] %}
-    {% else %}
-    style="overflow: hidden; text-overflow:ellipsis; white-space: nowrap;"
-    {% end %}
-    >
 
-    {% if 'spa' in kwd and kwd['spa'] %}
-    <a onclick="load_post('{{x.uid}}')" title="{{x.title}}" style="cursor:pointer;">
+
+
+
+
+{% if kwd['with_date'] %}
+<li class="list-group-item col-sm-12">
+    <em class="date col-sm-3">{{ datetime.datetime.fromtimestamp(x.time_update).strftime('%Y-%m-%d') }}</em>
+    <span class="col-sm-9" style="overflow: hidden; text-overflow:ellipsis; white-space: nowrap; display: block">
+   <a href="/{{ kwd['router'] }}/{{ x.uid }}" title="{{x.title}}">
+        &nbsp;&nbsp;{{x.title}}
+   </a>
+ </span>
+
+</li>
+
+{% else %}
+
+
+<li class="list-group-item"
+    {% if kwd['with_date']  or kwd['with_catalog'] %}
     {% else %}
-    <a href="/{{ kwd['router'] }}/{{ x.uid }}" title="{{x.title}}">
+        style="overflow: hidden; text-overflow:ellipsis; white-space: nowrap;"
     {% end %}
+>
+
+{% if 'spa' in kwd and kwd['spa'] %}
+    <a onclick="load_post('{{x.uid}}')" title="{{x.title}}" style="cursor:pointer;">
+{% else %}
+    <a href="/{{ kwd['router'] }}/{{ x.uid }}" title="{{x.title}}">
+{% end %}
 
         {% if 'glyph' in kwd and kwd['glyph'] != '' %}
         <span class="{{ kwd['glyph'] }}"></span>
@@ -57,13 +76,14 @@
         {% else %}
         <span class="glyphicon glyphicon-list-alt"></span>
         {% end %}
-        &nbsp;&nbsp;{{x.title}}</a>
+        &nbsp;&nbsp;{{x.title}}
+    </a>
     {% if kwd['with_catalog'] %}
     <span class="post_cat">{% module post_catalogs(x.uid,'1') %}</span>
     {% end %}
-    {% if kwd['with_date'] %}
-    <em class="date">{{ str(x.date)[:-15]}}</em>
-    {% end %}
+
     </li>
-    {% end %}
+
+{% end %}
+{% end %}
 
