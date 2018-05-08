@@ -4,7 +4,7 @@
     <span class="post_cat">{% module post_catalogs(x.uid,'1') %}</span>
     {% end %}
     {% if kwd['with_date'] %}
-    <em class="date">{{ str(x.date)[:-9]}}</em>
+    <em class="date">{{ datetime.datetime.fromtimestamp(x.time_create).strftime('%Y-%m-%d')  }}</em>
     {% end %}
 </li>
 {% end %}
