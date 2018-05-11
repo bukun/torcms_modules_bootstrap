@@ -2,13 +2,13 @@
 
     {% if kwd['page_home'] %}
     <li>
-        <a class="{0}" href="/search/{{ cat_slug }}/1">{{ _('Home') }} </a>
+        <a class="{0}" href="/search/{% if catid %}{{str(catid)[-1]}}/{% end%}{{ cat_slug }}/1">{{ _('Home') }} </a>
     </li>
     {% end %}
 
     {% if kwd['page_pre'] %}
     <li>
-        <a class="{0}" href="/search/{{ cat_slug }}/{{ page_current - 1 }}">{{ _('Previous Page') }}</a>
+        <a class="{0}" href="/search/{% if catid %}{{str(catid)[-1]}}/{% end%}{{ cat_slug }}/{{ page_current - 1 }}">{{ _('Previous Page') }}</a>
     </li>
     {% end %}
     {% set cur_num = page_current
@@ -25,18 +25,18 @@
     {% for page_index in range(cur_num, show_num ) %}
 
     <li class="{% if page_current == page_index  %}active{% end %}">
-        <a href="/search/{{ cat_slug }}/{{ page_index  }}">{{ page_index }}</a></li>
+        <a href="/search/{% if catid %}{{str(catid)[-1]}}/{% end%}{{ cat_slug }}/{{ page_index  }}">{{ page_index }}</a></li>
     {% end %}
 
     {% if kwd['page_next'] %}
     <li>
-        <a class="{0}" href="/search/{{ cat_slug }}/{{ page_current +1 }}">{{ _('Next Page') }}</a>
+        <a class="{0}" href="/search/{% if catid %}{{str(catid)[-1]}}/{% end%}{{ cat_slug }}/{{ page_current +1 }}">{{ _('Next Page') }}</a>
     </li>
     {% end %}
 
     {% if kwd['page_end'] %}
     <li>
-        <a class="{0}" href="/search/{{ cat_slug }}/{{ pager_num }}"> {{ _('End') }}</a>
+        <a class="{0}" href="/search/{% if catid %}{{str(catid)[-1]}}/{% end%}{{ cat_slug }}/{{ pager_num }}"> {{ _('End') }}</a>
     </li>
     {% end %}
 </ul>
