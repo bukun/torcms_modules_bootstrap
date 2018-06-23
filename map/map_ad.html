@@ -14,10 +14,20 @@
 
         cities = new L.LayerGroup();
 	// https://blog.csdn.net/GISuuser/article/details/77600052
-        var osm = L.tileLayer.chinaProvider('Google.Normal.Map', {
+
+
+
+        var osm = L.tileLayer.chinaProvider('TianDiTu.Normal.Annotion', {
             maxZoom: 18,
             minZoom: 1
-        }),
+        });
+
+        var osm1 = L.tileLayer.chinaProvider('TianDiTu.Normal.Map', {
+            maxZoom: 18,
+            minZoom: 1
+        });
+
+        var the_basemap = L.layerGroup([osm1, osm]);
 
         nexrad = L.tileLayer.wms("http://wcs.osgeo.cn:8088/service?", {
         layers: "maplet_" + map_uid,
@@ -32,7 +42,7 @@
         zoom: vzoom_current,
         maxZoom: vzoom_max,
         minZoom: vzoom_min,
-        layers: [osm, nexrad]
+        layers: [the_basemap, nexrad]
       });
 
 
@@ -41,7 +51,7 @@
        // L.marker([43.99862, 125.39653]).addTo(map).bindPopup(igainfo).openPopup();
 
         baseMaps = {
-        BaseMap: osm
+        BaseMap: the_basemap
       };
       overlayMaps = {
         "专题地图": nexrad
