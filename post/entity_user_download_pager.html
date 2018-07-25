@@ -1,14 +1,15 @@
+
 <ul class="pagination">
 
     {% if kwd['page_home'] %}
     <li>
-        <a class="{0}" href="/entity_download/{% if user_id %}{{user_id}}/{% end %}1">{{ _('Home') }} </a>
+        <a class="{0}" href="/entity_download/{{user_id}}/1">{{ _('Home') }} </a>
     </li>
     {% end %}
 
     {% if kwd['page_pre'] %}
     <li>
-        <a class="{0}" href="/entity_download/{% if user_id %}{{user_id}}/{% end %}{{ page_current - 1 }}">{{ _('Previous page') }}</a>
+        <a class="{0}" href="/entity_download/{{user_id}}/{{ page_current - 1 }}">{{ _('Previous page') }}</a>
     </li>
     {% end %}
 
@@ -24,18 +25,18 @@
     %}
     {% for page_index in range(cur_num, show_num ) %}
     <li class="{% if page_current == page_index %}active{% end %}">
-        <a href="/entity_download/{% if user_id %}{{user_id}}/{% end %}{{ page_index }}">{{ page_index }}</a></li>
+        <a href="/entity_download/{{user_id}}/{{ page_index }}">{{ page_index }}</a></li>
     {% end %}
 
     {% if kwd['page_next'] %}
     <li>
-        <a class="{0}" href="/entity_download/{% if user_id %}{{user_id}}/{% end %}{{ page_current +1 }}">{{ _('Next page') }}</a>
+        <a class="{0}" href="/entity_download/{{user_id}}/{{ page_current +1 }}">{{ _('Next page') }}</a>
     </li>
     {% end %}
 
     {% if kwd['page_end'] %}
     <li>
-        <a class="{0}" href="/entity_download/{% if user_id %}{{user_id}}/{% end %}{{ pager_num }}">{{ _('End') }}</a>
+        <a class="{0}" href="/entity_download/{{user_id}}/{{ pager_num }}">{{ _('End') }}</a>
     </li>
     {% end %}
 </ul>
