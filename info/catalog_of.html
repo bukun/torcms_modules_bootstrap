@@ -1,3 +1,4 @@
+{%  if with_title %}
 <div class="panel-heading">
     <a href="/filter/{{ pcatinfo.uid }}" class="flbt">
         {% if 'glyph' in kwd and kwd['glyph'] != '' %}
@@ -7,6 +8,7 @@
         {{ pcatinfo.name }}
     </a>
 </div>
+{%  end %}
 <ul class="list-group">
     {% for rec in recs %}
     <li class="list-group-item">

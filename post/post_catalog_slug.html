@@ -1,16 +1,18 @@
 <ul class="list-group">
+    {%  if with_title %}
     <div class="panel-heading">
         {% if order %}
         <a href="/catalog/{{ pcatinfo.slug }}" class="flbt">
-        {% else %}
-        <a href="/category/{{ pcatinfo.slug }}" class="flbt">
-         {% end %}
-            {% if 'glyph' in kwd and kwd['glyph'] != '' %}
-            <span class="{{ kwd['glyph'] }}"></span>
             {% else %}
-            {% end %} {{ pcatinfo.name }}
-        </a>
+            <a href="/category/{{ pcatinfo.slug }}" class="flbt">
+                {% end %}
+                {% if 'glyph' in kwd and kwd['glyph'] != '' %}
+                <span class="{{ kwd['glyph'] }}"></span>
+                {% else %}
+                {% end %} {{ pcatinfo.name }}
+            </a>
     </div>
+    {% end %}
     {% for rec in recs %}
     <li class="list-group-item">
         {% if order %}
