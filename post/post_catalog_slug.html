@@ -4,7 +4,7 @@
         {% if order %}
         <a href="/catalog/{{ pcatinfo.slug }}" class="flbt">
             {% else %}
-            <a href="/category/{{ pcatinfo.slug }}" class="flbt">
+            <a href="/list/{{ pcatinfo.slug }}" class="flbt">
                 {% end %}
                 {% if 'glyph' in kwd and kwd['glyph'] != '' %}
                 <span class="{{ kwd['glyph'] }}"></span>
@@ -22,7 +22,7 @@
         </span>
         </a>
         {% else %}
-        <a href="/category/{{ rec.slug }}"> {{ rec.name }}
+        <a href="/list/{{ rec.slug }}"> {{ rec.name }}
             <span style="font-size:0.8em;background-color:#00adef;color:#fff;padding:1px;">
                 ({{ rec.count }})
             </span>
