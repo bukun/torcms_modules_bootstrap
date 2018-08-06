@@ -5,19 +5,19 @@
     }
     jQuery().ready(function () {
         $("#user_navigation").accordion();
-        js_show_page('/user/p/info');
+        js_show_page('/user_j/info');
     });
 </script>
 <ul class="pagination">
     {% if kwd['page_home'] %}
     <li>
-        <a onclick="js_show_page('/post/p/recent/{{ kind }}/1')" class="{0}" >{{ _('Home') }} </a>
+        <a onclick="js_show_page('/post_j/recent/{{ kind }}/1')" class="{0}" >{{ _('Home') }} </a>
     </li>
     {% end %}
 
     {% if kwd['page_pre'] %}
     <li>
-        <a class="{0}" onclick="js_show_page('/post/p/recent/{{ kind }}/{{ page_current - 1 }}')">{{ _('Previous page') }}</a>
+        <a class="{0}" onclick="js_show_page('/post_j/recent/{{ kind }}/{{ page_current - 1 }}')">{{ _('Previous page') }}</a>
     </li>
     {% end %}
     {% set cur_num = page_current
@@ -32,19 +32,19 @@
     %}
     {% for page_index in range(cur_num, show_num ) %}
     <li class="{% if page_current == page_index %}active{% end %}">
-        <a onclick="js_show_page('/post/p/recent/{{ kind }}/{{ page_index }}')">{{ page_index }}</a></li>
+        <a onclick="js_show_page('/post_j/recent/{{ kind }}/{{ page_index }}')">{{ page_index }}</a></li>
     {% end %}
 
 
     {% if kwd['page_next'] %}
     <li>
-        <a class="{0}" onclick="js_show_page('/post/p/recent/{{ kind }}/{{ page_current +1 }}')">{{ _('Next page') }}</a>
+        <a class="{0}" onclick="js_show_page('/post_j/recent/{{ kind }}/{{ page_current +1 }}')">{{ _('Next page') }}</a>
     </li>
     {% end %}
 
     {% if kwd['page_end'] %}
     <li>
-        <a class="{0}"onclick="js_show_page('/post/p/recent/{{ kind }}/{{ pager_num }}')"> {{ _('End') }}</a>
+        <a class="{0}"onclick="js_show_page('/post_j/recent/{{ kind }}/{{ pager_num }}')"> {{ _('End') }}</a>
     </li>
     {% end %}
 </ul>
