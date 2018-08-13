@@ -5,19 +5,19 @@
         if (!statu) {
             return false;
         }
-        var AjaxUrl = "/" + info_router + "/j_delete/" + info_id;
+        var AjaxUrl = "/post_j/_delete/" + info_id;
 
         $.getJSON(AjaxUrl, function (Json) {
             var obj = eval(Json);
             if (obj.del_info == 1) {
                 alert('Delete Successful!');
                 if (obj.kind == '1' || obj.kind == 'm' || obj.kind == 'i' || obj.kind == 's') {
-                    router = "list"
-                    catid = obj.cat_slug
+                    router = "list";
+                    catid = obj.cat_slug;
                 }
                 else {
-                    router = "filter"
-                    catid = obj.cat_id
+                    router = "filter";
+                    catid = obj.cat_id;
                 }
 
                 if (catid != '') {
@@ -37,9 +37,9 @@
     }
 </script>
 
-                        <div class="btn-group">
+<div class="btn-group">
 
-{% if userinfo.role[1] > '1' %}
+    {% if userinfo.role[1] > '1' %}
 
     <a href="/{{kwd['router']}}/_edit/{{ kwd['uid']  }}" class="btn btn-xs btn-warning">
         <span class="glyphicon glyphicon-pencil"></span>
@@ -47,41 +47,41 @@
     </a>
 
 
-{% elif userinfo.role[0] > '0' %}
+    {% elif userinfo.role[0] > '0' %}
 
     <a href="/{{ 'wiki' if kwd['router'] == 'wiki' else 'meta' }}_man/edit/{{kwd['uid'] }}"
        class="btn btn-xs btn-warning"><span class="glyphicon glyphicon-pencil"></span>
         {{ _('Help edit') }}
     </a>
 
-{% end %}
+    {% end %}
 
-{% if userinfo.role[1] >= '2' %}
+    {% if userinfo.role[1] >= '2' %}
 
     <a href="/{{ 'wiki' if kwd['router'] == 'wiki' else 'meta' }}_man/view/{{ kwd['uid']  }}"
        class="btn btn-xs btn-success">
-          <span class="glyphicon glyphicon-eye-open"></span>
+        <span class="glyphicon glyphicon-eye-open"></span>
         {{ _('Review') }}
     </a>
 
-{% end %}
+    {% end %}
 
-{% if userinfo.role[1] >= '3' %}
-{% if kwd['router'] != 'map' %}
+    {% if userinfo.role[1] >= '3' %}
+    {% if kwd['router'] != 'map' %}
 
     <a href="/post/_edit_kind/{{ kwd['uid']  }}" class="btn btn-xs btn-info">{{ _('Reclassify') }}</a>
 
-{% end %}
+    {% end %}
     <a onclick="info_del('{{kwd['uid']}}','{{kwd['router']}}')" class="btn btn-xs btn-danger">
         <span class="glyphicon glyphicon-trash"></span>
         {{ _('Delete') }}
     </a>
 
-{% end %}
+    {% end %}
 
 </div>
 {% else %}
-                        <div class="btn-group">
+<div class="btn-group">
 
     <a href="/{{ 'wiki' if kwd['router'] == 'wiki' else 'meta' }}_man/edit/{{kwd['uid'] }}"
        class="btn btn-xs btn-warning">
