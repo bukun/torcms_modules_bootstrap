@@ -39,3 +39,27 @@
     </li>
     {% end %}
 </ul>
+{% if pager_num >= 15 %}
+<div class="row">
+    <div class="col-sm-12">
+        Go to <input id="changePage" type="text" size="1" maxlength="4" style=" border: 3px solid #fff; height: 20px "/> page
+        <a href="#" id="btn5" class="btn btn-xs btn-primary">Jump</a>
+        <script type="text/javascript">
+            var page = '{{pager_num}}';
+            $("#btn5").click(function changePage() {
+                curPage = document.getElementById("changePage").value * 1;
+                if (!/^[1-9]\d*$/.test(curPage)) {
+                    alert("Please enter a positive integer");
+                    return;
+                }
+                if (curPage > page) {
+                    alert("Exceed the data page");
+                    return;
+                }
+                window.location.href = "/label/{{kind}}/{{ cat_slug }}/" + curPage;
+            });
+        </script>
+    </div>
+</div>
+<br>
+{% end %}
