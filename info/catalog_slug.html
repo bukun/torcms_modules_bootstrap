@@ -2,7 +2,7 @@
     {% if 'glyph' in kwd and kwd['glyph'] != '' %}
     <span class="{{ kwd['glyph'] }}"></span>
     {% else %}
-    {% end %} {{ pcatinfo.name }}
+    {% end %} <b>{{ pcatinfo.name }}</b>
 </div>
 <ul class="list-group">
     {% for rec in recs %}
