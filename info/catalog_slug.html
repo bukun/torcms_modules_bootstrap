@@ -1,8 +1,10 @@
 <div class="panel-heading">
+    <a href="/list/{{ pcatinfo.slug }}" class="flbt">
     {% if 'glyph' in kwd and kwd['glyph'] != '' %}
     <span class="{{ kwd['glyph'] }}"></span>
     {% else %}
     {% end %} <b>{{ pcatinfo.name }}</b>
+        </a>
 </div>
 <ul class="list-group">
     {% for rec in recs %}
