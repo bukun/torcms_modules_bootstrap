@@ -1,4 +1,3 @@
-
 <script>
 
     function uv(result) {
@@ -20,7 +19,7 @@
                 $("#wiki_time_update").html(date.getFullYear() + '-' + date.getMonth() + '-' + date.getDay());
             }
             else {
-                $("#wiki_cnt_html" ).html(field);
+                $("#wiki_cnt_html").html(field);
             }
         });
     }
@@ -35,20 +34,18 @@
     }
 </script>
 
-
-    {% for x in recs %}
+{% set ii = 1%}
+{% for x in recs %}
 {% if x.valid == 1%}
-
-
 
 
 {% if kwd['with_date'] %}
 <li class="list-group-item" style="overflow: hidden; text-overflow:ellipsis; white-space: nowrap; display: block; ">
 
-  {{ datetime.datetime.fromtimestamp(x.time_update).strftime('%Y-%m-%d') }}
-   <a href="/{{ kwd['router'] }}/{{ x.uid }}" title="{{x.title}}">
+    {{ datetime.datetime.fromtimestamp(x.time_update).strftime('%Y-%m-%d') }}
+    <a href="/{{ kwd['router'] }}/{{ x.uid }}" title="{{x.title}}">
         &nbsp;&nbsp;{{x.title}}
-   </a>
+    </a>
 
 </li>
 
@@ -57,21 +54,23 @@
 
 <li class="list-group-item"
     {% if kwd['with_date']  or kwd['with_catalog'] %}
-    {% else %}
-        style="overflow: hidden; text-overflow:ellipsis; white-space: nowrap;"
-    {% end %}
+{% else %}
+style="overflow: hidden; text-overflow:ellipsis; white-space: nowrap;"
+{% end %}
 >
 
 {% if 'spa' in kwd and kwd['spa'] %}
-    <a onclick="load_post('{{x.uid}}')" title="{{x.title}}" style="cursor:pointer;">
-{% else %}
+<a onclick="load_post('{{x.uid}}')" title="{{x.title}}" style="cursor:pointer;">
+    {% else %}
     <a href="/{{ kwd['router'] }}/{{ x.uid }}" title="{{x.title}}">
-{% end %}
+        {% end %}
 
         {% if 'glyph' in kwd and kwd['glyph'] != '' %}
         <span class="{{ kwd['glyph'] }}"></span>
         {% elif 'kind' in kwd and kwd['kind'] == 'm' %}
         <span class="glyphicon glyphicon-map-marker"></span>
+        {% elif 'order' in kwd and kwd['order'] == True %}
+        {{ii}}
         {% else %}
         <span class="glyphicon glyphicon-list-alt"></span>
         {% end %}
@@ -83,7 +82,8 @@
 
     </li>
 
-{% end %}
-{% end %}
-{% end %}
+    {% end %}
+    {% end %}
+    {% set ii = ii + 1 %}
+    {% end %}
 
