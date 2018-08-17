@@ -6,18 +6,23 @@
             return false;
         }
         var AjaxUrl = "/post_j/_delete/" + info_id;
-
+        var rout = "{{kwd['router']}}";
         $.getJSON(AjaxUrl, function (Json) {
             var obj = eval(Json);
             if (obj.del_info == 1) {
                 alert('Delete Successful!');
-                if (obj.kind == '1' || obj.kind == 'm' || obj.kind == 'i' || obj.kind == 's') {
-                    router = "list";
+
+                if(rout == 'tutorial'){
+                    router = "catalog";
                     catid = obj.cat_slug;
                 }
-                else {
+                else if (rout == 'info'){
                     router = "filter";
                     catid = obj.cat_id;
+                }
+                else{
+                    router = "list";
+                    catid = obj.cat_slug;
                 }
 
                 if (catid != '') {
