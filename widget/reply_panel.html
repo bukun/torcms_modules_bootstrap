@@ -1,13 +1,20 @@
 <form method="post" class="form-horizontal" id="reply_form">
     <div class="form-group">
         <div class="col-sm-10">
-            {{ _('Let me comment') }} {{ _('at least 50 characters') }} | {{ _('support MarkDown syntax') }}
-            <span class="red">{{ _('After landing can comment') }}！</span>
+            {% if userinfo %}
+            <h4>{{ _('Please comment') }} {{ _('at least 50 characters') }} | {{ _('support MarkDown syntax') }}</h4>
+            {% else %}
+            <h3 class="red">{{ _('You can post a comment after logging in') }}!</h3>
+            {% end %}
         </div>
     </div>
     <div class="form-group">
         <div class="col-sm-10">
+           {% if userinfo %}
             <textarea rows="5" name="cnt_reply" id="cnt_reply" class="form-control"></textarea>
+            {% else %}
+            <textarea rows="5" name="cnt_reply" id="cnt_reply" class="form-control" readonly></textarea>
+            {% end %}
         </div>
     </div>
     <div class="form-group">
@@ -20,7 +27,7 @@
 </form>
 
 <div id="pinglun"></div>
-{{ _('To comment') }}
+{{ _(' Comment list') }}
 <p style="border-bottom: 1px dashed #dddddd; margin-bottom: 20px">&nbsp;</p>
 {% set ii = 0 %}
 {% for reply in replys %}
