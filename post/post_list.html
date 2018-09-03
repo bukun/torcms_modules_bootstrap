@@ -43,8 +43,8 @@
 <li class="list-group-item" style="overflow: hidden; text-overflow:ellipsis; white-space: nowrap; display: block; ">
 
     {{ datetime.datetime.fromtimestamp(x.time_update).strftime('%Y-%m-%d') }}
-    <a href="/{{ kwd['router'] }}/{{ x.uid }}" title="{{x.title}}">
-        &nbsp;&nbsp;{{x.title}}
+    <a href="/{{ kwd['router'] }}/{{ x.uid }}" title="{{ _(x.title) }}">
+        &nbsp;&nbsp;{{ _(x.title) }}
     </a>
 
 </li>
@@ -60,9 +60,9 @@ style="overflow: hidden; text-overflow:ellipsis; white-space: nowrap;"
 >
 
 {% if 'spa' in kwd and kwd['spa'] %}
-<a onclick="load_post('{{x.uid}}')" title="{{x.title}}" style="cursor:pointer;">
+<a onclick="load_post('{{x.uid}}')" title="{{ _(x.title) }}" style="cursor:pointer;">
     {% else %}
-    <a href="/{{ kwd['router'] }}/{{ x.uid }}" title="{{x.title}}">
+    <a href="/{{ kwd['router'] }}/{{ x.uid }}" title="{{ _(x.title) }}">
         {% end %}
 
         {% if 'glyph' in kwd and kwd['glyph'] != '' %}
@@ -74,7 +74,7 @@ style="overflow: hidden; text-overflow:ellipsis; white-space: nowrap;"
         {% else %}
         <span class="glyphicon glyphicon-list-alt"></span>
         {% end %}
-        &nbsp;&nbsp;{{x.title}}
+        &nbsp;&nbsp;{{ _(x.title) }}
     </a>
     {% if kwd['with_catalog'] %}
     <span class="post_cat">{% module post_catalogs(x.uid,'1') %}</span>

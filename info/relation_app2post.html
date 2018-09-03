@@ -3,7 +3,7 @@
     <li class="list-group-item">
         <a href="/post/{{ s.post_id }}">
             <span class="glyphicon glyphicon-list-alt"></span>
-            {{ s.post_title }}
+            {{ _(s.post_title) }}
         </a>
     </li>
     {% end %}
@@ -12,7 +12,7 @@
     <li class="list-group-item">
         <a href="/post/{{ s.uid }}">
             <span class="glyphicon glyphicon-list-alt"></span>
-            {{ s.title }}</a>
+            {{ _(s.title) }}</a>
     </li>
     {% end %}
 </ul>

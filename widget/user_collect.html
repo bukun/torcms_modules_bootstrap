@@ -8,7 +8,7 @@
         {% else %}
         <span class="glyphicon glyphicon-list-alt"></span>
         {% end %}
-                {{ rec.post_title }}
+                {{ _(rec.post_title) }}
             </a>
             <span class="post_cat">{% module app_tags(rec.post_uid) %}</span>
 

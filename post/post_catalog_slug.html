@@ -9,20 +9,20 @@
                 {% if 'glyph' in kwd and kwd['glyph'] != '' %}
                 <span class="{{ kwd['glyph'] }}"></span>
                 {% else %}
-                {% end %} {{ pcatinfo.name }}
+                {% end %} {{ _(pcatinfo.name) }}
             </a>
     </div>
     {% end %}
     {% for rec in recs %}
     <li class="list-group-item">
         {% if order %}
-        <a href="/catalog/{{ rec.slug }}"> {{ rec.name }}
+        <a href="/catalog/{{ rec.slug }}"> {{ _(rec.name) }}
             <span style="font-size:0.8em;background-color:#00adef;color:#fff;padding:1px;">
             ({{ rec.count }})
         </span>
         </a>
         {% else %}
-        <a href="/list/{{ rec.slug }}"> {{ rec.name }}
+        <a href="/list/{{ rec.slug }}"> {{ _(rec.name) }}
             <span style="font-size:0.8em;background-color:#00adef;color:#fff;padding:1px;">
                 ({{ rec.count }})
             </span>

@@ -1,7 +1,7 @@
 {% if userinfo %}
 <script>
     function info_del(info_id, info_router) {
-        var statu = confirm("Are you sure to delete the current data?");
+        var statu = confirm("{{ _('Are you sure to delete the current data') }}?");
         if (!statu) {
             return false;
         }
@@ -10,7 +10,7 @@
         $.getJSON(AjaxUrl, function (Json) {
             var obj = eval(Json);
             if (obj.del_info == 1) {
-                alert('Delete Successful!');
+                alert("{{ _('Delete Successful') }}!");
 
                 if(rout == 'tutorial'){
                     router = "catalog";
@@ -33,7 +33,7 @@
                 }
             }
             else {
-                alert('Delete Failed!');
+                alert("{{ _('Delete Failed') }}!");
             }
 
         });

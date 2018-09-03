@@ -2,7 +2,7 @@
 <li class="list-group-item">
     <a href="{% module site_url() %}/list/{{ x.slug }}">
 
-        {{ x.name }}
+        {{ _(x.name) }}
         {% if kwd['with_count'] %}
         [{{ x.post_count}}]
         {% end %}

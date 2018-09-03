@@ -3,7 +3,7 @@
     <li class="list-group-item">
         <a href="/map/{{ s.app_t.uid }}">
             <span class="glyphicon glyphicon-map-marker"></span>
-            {{ s.app_t.title }}
+            {{ _(s.app_t.title) }}
             {% if s.app_t.uid[0] == 'v' %}<span class="badge" style="color:yellow">v</span>{% end %}
         </a>
     </li>
@@ -12,7 +12,7 @@
     <li class="list-group-item">
         <a href="/map/{{ s.uid }}">
             <span class="glyphicon glyphicon-map-marker"></span>
-            {{ s.title }}
+            {{ _(s.title) }}
             {% if s.uid[0] == 'v' %}<span class="badge" style="color:yellow">v</span>{% end %}
         </a>
     </li>

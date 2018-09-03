@@ -22,16 +22,16 @@
     <p>{% raw unescape(reply.reply_id.cnt_html) %}</p>
 
     <p>{{ _('Editor in') }}{{ str(reply.reply_id.date).split('.')[0] }}
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        {{ _('a total of') }} <span id="text_zan_{{ ii }}">{{ reply.reply_id.vote }}</span> {{ _('people agree') }}
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        {% if (userinfo is None) or ( (userinfo is not None ) and ( userinfo.uid != reply.reply_id.uid )) %}
-        <a class="btn btn-primary"
-           style="padding:3px 8px; margin-right: 5px"
-           onclick="reply_zan('post', '{{ reply.reply_id.uid }}', {{ ii }} );">
-            {{ _('Vote') }}
-        </a>
+
+
+        {% if (userinfo is None) or ( (userinfo) and ( userinfo.uid == reply.user_id )) %}
+               <span class="glyphicon glyphicon-thumbs-up"></span>
+        {% else %}
+            <span class="glyphicon glyphicon-thumbs-up"  id="zan_text" onclick="reply_zan('{{ reply.uid }}', {{ ii }} );" style="cursor: pointer"></span>
         {% end %}
+    <span style="color: #f00" id="text_zan_{{ ii }}">{{ reply.vote }}</span>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
         {% if userinfo is not None and ( userinfo.uid == reply.reply_id.uid or userinfo.role[4] == '1') %}
         <a class="btn btn-primary" style="padding:3px 8px;"
            onclick="reply_del('post', '{{ reply.reply_id.uid }}', {{ ii }} );">
