@@ -4,23 +4,13 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">{{ _('Add Entity') }}</h4>
+                <h4 class="modal-title" id="myModalLabel">{{ _('Upload files') }}</h4>
             </div>
             <div class="modal-body">
 
 
                 <form  enctype="multipart/form-data" class="form-horizontal" id="upload_form">
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label">{{ _('Type') }}</label>
-
-                        <div class="col-sm-9">
-                            <select name="kind" class="form-control" id="kind">
-                                <option value="1" onclick="hiddenXX()">{{ _('Picture') }}</option>
-                                <option value="2" onclick="hiddenXX()">PDF,zip,doc,rar,ppt,7z,xlsx</option>
-
-                            </select>
-                        </div>
-                    </div>
+                    <input name="kind" type="hidden" id="kind" value="2">
                     <div class="form-group" >
                         <label class="col-sm-2 control-label"></label>
 
@@ -30,7 +20,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="col-sm-2 control-label" for="desc">Describe</label>
+                        <label class="col-sm-2 control-label" for="desc">{{ _('Describe') }}</label>
 
                         <div class="col-sm-9">
                             <textarea name="desc" id="desc" class="form-control" rows="8"></textarea>
@@ -40,7 +30,7 @@
                         <label class="col-sm-2 control-label"></label>
 
                         <div class="col-sm-9">
-                            <input type="submit" data-dismiss="modal" value="submit" onclick="UpladFile()" />
+                            <input type="submit" data-dismiss="modal" value="{{ _('submit') }}" onclick="UpladFile()" />
 
                         </div>
                     </div>
@@ -83,10 +73,10 @@
                 var logo_src = "/static/upload/" + msg_json.path_save;
                 document.getElementById('logo').value = logo_src;
 
-                alert("上传成功！");
+                alert("{{ _('Success') }}");
             },
             error: function () {
-                alert('上传失败！');
+                alert("{{ _('Fail') }}");
             }
 
         });
