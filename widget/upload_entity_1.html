@@ -12,26 +12,28 @@
                 <form  enctype="multipart/form-data" class="form-horizontal" id="upload_form">
 
                     <input name="kind" type="hidden" id="kind" value="1">
+                      <br>
                     <div class="form-group" >
-                        <label class="col-sm-2 control-label"></label>
+                        <label class="col-sm-3 control-label">{{ _('Select the file') }}</label>
 
                         <div class="col-sm-9">
+
                             <input name="file" type="file" id="file">
                         </div>
                     </div>
-
+                    <br>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label" for="desc">{{ _('Describe') }}</label>
+                        <label class="col-sm-3 control-label" for="desc">{{ _('Describe') }}</label>
 
                         <div class="col-sm-9">
                             <textarea name="desc" id="desc" class="form-control" rows="8"></textarea>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label"></label>
+                        <label class="col-sm-3 control-label"></label>
 
                         <div class="col-sm-9">
-                            <input type="submit" data-dismiss="modal" value="{{ _('submit') }}" onclick="UpladFile()" />
+                            <input type="submit" data-dismiss="modal" value="{{ _('submit') }}" class="btn btn-primary btn-sm" onclick="UpladFile()" />
 
                         </div>
                     </div>
