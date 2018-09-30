@@ -9,7 +9,8 @@
     <a href="{{ kwd['site_url'] }}/geojson/download/maplet_geojson_{{ j_rec.uid }}.json"
        class="btn btn-xs btn-info" target="_blank">
         <span class="glyphicon glyphicon-download"></span> {{ _('Download') }}</a>
-    <a href="{{ kwd['site_url'] }}/map/{{ app_id }}?gson={{ j_rec.uid }}">
+    <a href="{{ kwd['site_url'] }}/map/{{ app_id }}?gson={{ j_rec.uid }}"
+       title="{{ kwd['site_url'] }}/map/{{ app_id }}?gson={{ j_rec.uid }}">
         {{ kwd['site_url'] }}/map/{{ app_id }}?gson={{ j_rec.uid }}</a>
     <a onclick="del_geojson('{{ j_rec.uid }}')" class="btn btn-xs btn-danger" target="_blank">
         <span class="glyphicon glyphicon-remove"></span>{{ _('Delete') }} </a>

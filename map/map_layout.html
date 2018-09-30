@@ -7,7 +7,7 @@
         <span class="glyphicon glyphicon-fullscreen"></span> {{ _('Full screen') }} </a>
     <a onclick="del_layout('{{ layout_rec.uid }}')" class="btn btn-xs btn-danger" target="_blank">
         <span class="glyphicon glyphicon-remove"></span>{{ _('Delete') }}</a>
-    <a href="{{ kwd['site_url'] }}/map/{{ u_link }}"
+    <a href="{{ kwd['site_url'] }}/map/{{ u_link }}" title="{{ kwd['site_url'] }}/map/{{ u_link }}"
        style=" white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">
         {{ kwd['site_url'] }}/map/{{ u_link }}</a>
 </li>
