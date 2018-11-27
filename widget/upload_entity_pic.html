@@ -73,7 +73,7 @@
 
             success: function (data) {
                 var msg_json = $.parseJSON(data);
-                var logo_src = "/static/upload/" + msg_json.path_save;
+                var logo_src = "/" + msg_json.path_save;
                 document.getElementById('logo').value = logo_src;
 
                 alert("{{ _('Success') }}");
