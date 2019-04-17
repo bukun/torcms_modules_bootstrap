@@ -33,11 +33,12 @@
 {% for reply in replys %}
 
 <div id="del_zan_{{ ii }}" style="font-size: 14px;">
-    <p><strong>{{ reply.user_name }}</strong></p>
+    <p style="color: #f00"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;  <strong>{{ reply.user_name }}</strong></p>
 
     <p class="listinfo_content"> {% raw unescape(reply.cnt_html) %}</p>
-
-    <p>{{ _('Editor in') }}&nbsp;&nbsp; {{ str(reply.date).split('.')[0] }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <br>
+    <p><span class="glyphicon glyphicon-hand-right"></span>&nbsp;&nbsp; <b>{{ _('Editor in') }}</b>&nbsp;&nbsp;
+        {{ str(reply.date).split('.')[0] }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 
         {% if (userinfo is None) or ( (userinfo) and ( userinfo.uid == reply.user_id )) %}
@@ -52,6 +53,7 @@
         {% if userinfo and ( userinfo.uid == reply.user_id or userinfo.role[2] > '1') %}
         <a class="btn btn-xs btn-primary" style="padding:3px 8px;"
            onclick="reply_del('{{ reply.uid }}', {{ ii }} );">
+            <span class=" 	glyphicon glyphicon-trash"></span>
             {{ _('Delete') }}
         </a>
         {% end %}
