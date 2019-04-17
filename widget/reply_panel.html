@@ -1,10 +1,15 @@
+<style>
+    .red{
+        color: #f00;
+    }
+</style>
 <form method="post" class="form-horizontal" id="reply_form">
     <div class="form-group">
         <div class="col-sm-10">
             {% if userinfo %}
-            <h5>{{ _('Please comment with MarkDown syntax ') }}( {{ _(' at least 50 characters ') }}) </h5>
+            <h5 class="red"><span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp; {{ _('Please comment with MarkDown syntax ') }}( {{ _(' at least 50 characters ') }}) </h5>
             {% else %}
-            <h5 class="red">{{ _('Be logged in to post a comment!') }}!</h5>
+            <h5 class="red"><span class="glyphicon glyphicon-info-sign"></span>&nbsp;&nbsp;{{ _('Be logged in to post a comment !') }}</h5>
             {% end %}
         </div>
     </div>
@@ -27,13 +32,14 @@
 </form>
 
 <div id="pinglun"></div>
-{{ _(' Comment list') }}
+<br>
+<p><span class="glyphicon glyphicon-th-list"></span> {{ _(' Comment list') }} (<span  class="red"> {{replys_count}}</span> )</p>
 <p style="border-bottom: 1px dashed #dddddd; margin-bottom: 20px">&nbsp;</p>
 {% set ii = 0 %}
 {% for reply in replys %}
 
 <div id="del_zan_{{ ii }}" style="font-size: 14px;">
-    <p style="color: #f00"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;  <strong>{{ reply.user_name }}</strong></p>
+    <p  class="red"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;  <strong>{{ reply.user_name }}</strong></p>
 
     <p class="listinfo_content"> {% raw unescape(reply.cnt_html) %}</p>
     <br>
@@ -46,7 +52,7 @@
         {% else %}
             <span class="glyphicon glyphicon-thumbs-up"  id="zan_text" onclick="reply_zan('{{ reply.uid }}', {{ ii }} );" style="cursor: pointer"></span>
         {% end %}
-    <span style="color: #f00" id="text_zan_{{ ii }}">{{ reply.vote }}</span>
+    <span  class="red" id="text_zan_{{ ii }}">{{ reply.vote }}</span>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 
