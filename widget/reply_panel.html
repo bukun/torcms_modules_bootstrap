@@ -33,7 +33,7 @@
 
 <div id="pinglun"></div>
 <br>
-<p><span class="glyphicon glyphicon-th-list"></span> {{ _(' Comment list') }} (<span  class="red"> {{replys_count}}</span> )</p>
+<p><span class="glyphicon glyphicon-th-list"></span> {{ _(' Comment list') }} (<span  class="red"> {{replys.count()}}</span> )</p>
 <p style="border-bottom: 1px dashed #dddddd; margin-bottom: 20px">&nbsp;</p>
 {% set ii = 0 %}
 {% for reply in replys %}
