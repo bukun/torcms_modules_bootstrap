@@ -9,7 +9,11 @@
             {% if userinfo %}
             <h5 class="red"><span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp; {{ _('Please comment with MarkDown syntax ') }}( {{ _(' at least 10 characters ') }}) </h5>
             {% else %}
-            <h5 class="red"><span class="glyphicon glyphicon-info-sign"></span>&nbsp;&nbsp;{{ _('Be logged in to post a comment !') }}</h5>
+
+
+            <h5 class="red">
+                <span class="glyphicon glyphicon-hand-right"></span>&nbsp;&nbsp;<a href="/user/login" class="btn btn-xs btn-danger" > {{ _('Sign in') }}</a>
+                for comments!</h5>
             {% end %}
         </div>
     </div>
