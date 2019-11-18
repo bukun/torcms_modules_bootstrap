@@ -59,11 +59,81 @@
         {% if userinfo and ( userinfo.uid == reply.user_id or userinfo.role[2] > '1') %}
         <a class="btn btn-xs btn-primary" style="padding:3px 8px;"
            onclick="reply_del('{{ reply.uid }}', {{ ii }} );">
-            <span class=" 	glyphicon glyphicon-trash"></span>
+            <span class=" glyphicon glyphicon-trash"></span>
             {{ _('Delete') }}
         </a>
         {% end %}
+        {% if userinfo and userinfo.uid == reply.user_id %}
+        <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal{{ii}}">Modify</button>
+        {% end %}
+         {% if userinfo %}
+        <button class="btn btn-primary btn-sm" data-toggle="collapse" data-target="#demo{{ii}}">Reply</button>
+        {% end %}
     </p>
+        <div id="reply_comment"></div>
+        <div id="demo{{ii}}" class="collapse comment">
+                    <form method="post" class="form-horizontal" id="comment_form">
+                        <div class="form-group">
+                            <div class="col-sm-10">
+                               {% if userinfo %}
+                                <textarea rows="5" name="cnt_comment{{ii}}" id="cnt_comment{{ii}}" class="form-control"></textarea>
+                                {% else %}
+                                <textarea rows="5" name="cnt_comment{{ii}}" id="cnt_comment{{ii}}" class="form-control" readonly></textarea>
+                                {% end %}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <a id="btn_submit_comment{{ii}}" onclick="comment_it('{{uid}}','{{reply.uid}}','cnt_comment{{ii}}','btn_submit_comment{{ii}}');" class="btn btn-primary btn-small">
+                                    {{ _('Submit') }}
+                                </a>
+                            </div>
+                            <div class="col-sm-6">
+                               <button type="button" class="btn btn-primary btn-sm" data-toggle="collapse" data-target="#demo{{ii}}">Cancel Reply</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+        <ul class="list-group">
+            {% module comment_list(replyid = reply.uid,userinfo=userinfo) %}
+        </ul>
+
+        <div class="modal fade" id="myModal{{ii}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">Modify Comment {{ii}}</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form method="post" class="form-horizontal" id="reply_modify_form">
+                            <div class="form-group">
+                                <div class="col-sm-10">
+                                    <h5 class="red"><span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;
+                                        {{ _('Please comment with MarkDown syntax ') }}( {{ _(' at least 10 characters') }})
+                                    </h5>
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-10">
+                                <textarea rows="5" name="cnt_modify_reply{{ii}}" id="cnt_modify_reply{{ii}}"
+                                          class="form-control">
+                                    {% module replycnt(replyid = reply.uid) %}
+                                </textarea>
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <a onclick="reply_modify('{{reply.uid}}','cnt_modify_reply{{ii}}','0');"
+                               data-dismiss="modal" class="btn btn-primary">Submit</a>
+                        </form>
+                    </div>
+
+
+                </div>
+    </div>
+</div>
+
 
     <p style="border-bottom: 1px dashed #dddddd; margin-bottom: 20px">&nbsp;</p>
 </div>
