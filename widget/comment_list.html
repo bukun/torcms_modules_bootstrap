@@ -1,62 +1,72 @@
 {% set xx = 10000 %}
 {% for rec in recs%}
-<div id="del_reply_{{xx}}">
-<li class="list-group-item" style="background: #eee">
-     <p><span style="color: blue"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;  <strong>{{ rec.user_name }}</strong></span>
-      <span style="float: right"><span class="glyphicon glyphicon-hand-right"></span>&nbsp;&nbsp; <b>{{ _('Editor in') }}</b>&nbsp;&nbsp;
-        {{ str(rec.date).split('.')[0] }}</span>
-     </p>
-
-    <p class="listinfo_content" style="border-top: 2px #fff solid"> {% raw unescape(rec.cnt_html) %}</p>
-
-     {% if userinfo and ( userinfo.uid == rec.user_id or userinfo.role[2] > '1') %}
-        <a class="btn btn-xs btn-primary" style="padding:3px 8px;"
-           onclick="reply_del_com('{{ rec.uid }}',{{xx}});">
-            <span class=" glyphicon glyphicon-trash"></span>
-            {{ _('Delete') }}
-        </a>
-        {% end %}
-        {% if userinfo and userinfo.uid == rec.user_id %}
-        <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal{{xx}}">Modify</button>
-        {% end %}
-        <div class="modal fade" id="myModal{{xx}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title" id="myModalLabel">Modify Comment</h4>
-                </div>
-                <div class="modal-body">
-                    <form method="post" class="form-horizontal" id="reply_modify_form">
-                        <div class="form-group">
-                            <div class="col-sm-10">
-                                <h5 class="red"><span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;
-                                    {{ _('Please comment with MarkDown syntax ') }}( {{ _(' at least 10 characters ') }})
-                                </h5>
-
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-sm-10">
-                                <textarea rows="5" name="cnt_modify_reply{{xx}}" id="cnt_modify_reply{{xx}}" class="form-control">
-                                    {% module replycnt(replyid = rec.uid) %}
-                                </textarea>
-                            </div>
-                        </div>
-                               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                 <a onclick="reply_modify('{{rec.uid}}','cnt_modify_reply{{xx}}','1');"  data-dismiss="modal" class="btn btn-primary">Submit</a>
-                    </form>
+<div class="clearfix"></div>
+<div id="del_reply_{{ xx }}">
+        <div class="reply_list">
+            <div class="reply_title">
+                <span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp; <strong>{{ rec.user_name }}</strong>
+                    <span style="float: right"><span class="glyphicon glyphicon-time"></span>&nbsp;&nbsp;
+                 {{ str(rec.date).split('.')[0] }}</span>
 
             </div>
-
-
-
+            <div class="reply_cnt">
+                <div class="listinfo_content"> {% raw unescape(rec.cnt_html) %}</div>
+                <div class="reply_button pull-right">
+                    {% if userinfo and userinfo.uid == rec.user_id %}
+                    <button class="btn btn-xs btn-primary" data-toggle="modal" data-target="#myModal{{xx}}">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                        &nbsp;Modify
+                    </button>
+                    {% end %}
+                    {% if userinfo and ( userinfo.uid == rec.user_id or userinfo.role[2] > '1') %}
+                    <button class="btn btn-xs btn-primary"
+                            onclick="reply_del_com('{{ rec.uid }}',{{ xx }} );">
+                        <span class=" glyphicon glyphicon-trash"></span>
+                        {{ _('Delete') }}
+                    </button>
+                    {% end %}
+                </div>
+            </div>
 
         </div>
-    </div>
-</div>
+        <div class="modal fade" id="myModal{{xx}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">Modify Comment</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form method="post" class="form-horizontal" id="reply_modify_form">
+                            <div class="form-group">
+                                <div class="col-sm-10">
+                                    <h5 class="red"><span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;
+                                        {{ _('Please comment with MarkDown syntax ') }}( {{ _(' at least 10 characters ') }})
+                                    </h5>
 
-</li>
-    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-10">
+                                <textarea rows="5" name="cnt_modify_reply{{xx}}" id="cnt_modify_reply{{xx}}"
+                                          class="form-control">
+                                    {% module replycnt(replyid = rec.uid) %}
+                                </textarea>
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <a onclick="reply_modify('{{rec.uid}}','cnt_modify_reply{{xx}}','1');" data-dismiss="modal"
+                               class="btn btn-primary">Submit</a>
+                        </form>
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+</div>
 {% set xx = xx + 1 %}
 {% end %}
