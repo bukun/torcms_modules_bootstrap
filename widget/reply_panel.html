@@ -70,46 +70,51 @@
         <div class="row">
             <div class="col-sm-2">{% module user_profile_by_id(reply.user_id) %}</div>
             <div class="col-sm-10">
-    <div class="reply_title">
-        <span class="red"> <span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;  {{ reply.user_name }}</span>
-    <span class="pull-right"><span class=" glyphicon glyphicon-time"></span>&nbsp;
+                <div class="reply_title">
+                    <span class="red"> <span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;  {{ reply.user_name }}</span>
+                    <span class="pull-right"><span class=" glyphicon glyphicon-time"></span>&nbsp;
         {{ str(reply.date).split('.')[0] }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-    </div>
+                </div>
 
-    <div class="reply_cnt">
-        <div class="listinfo_content">
-        {% raw unescape(reply.cnt_html) %}
-        </div>
-         <div class="reply_button pull-right">
-            {% if (userinfo is None) or ( (userinfo) and ( userinfo.uid == reply.user_id )) %}
-                   <span class="glyphicon glyphicon-thumbs-up"></span>
-            {% else %}
-                <span class="glyphicon glyphicon-thumbs-up"  id="zan_text" onclick="reply_zan('{{ reply.uid }}', {{ ii }} );" style="cursor: pointer"></span>
-            {% end %}
-                 <span  class="red" id="text_zan_{{ ii }}">{{ reply.vote }}</span>
-            &nbsp;
+                <div class="reply_cnt">
+                    <div class="listinfo_content" id="reply_cnt{{ ii }}">
+                        {% raw unescape(reply.cnt_html) %}
+                    </div>
+                    <div class="reply_button pull-right">
+                        {% if (userinfo is None) or ( (userinfo) and ( userinfo.uid == reply.user_id )) %}
+                        <span class="glyphicon glyphicon-thumbs-up"></span>
+                        {% else %}
+                        <span class="glyphicon glyphicon-thumbs-up" id="zan_text"
+                              onclick="reply_zan('{{ reply.uid }}', {{ ii }} );" style="cursor: pointer"></span>
+                        {% end %}
+                        <span class="red" id="text_zan_{{ ii }}">{{ reply.vote }}</span>
+                        &nbsp;
 
-            {% if userinfo and userinfo.uid == reply.user_id %}
-            <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal{{ii}}"><span class="glyphicon glyphicon-pencil"></span>&nbsp;Modify</button>
-            {% end %}
-              {% if userinfo and ( userinfo.uid == reply.user_id or userinfo.role[2] > '1') %}
-            <button class="btn btn-xs btn-primary"
-               onclick="reply_del('{{ reply.uid }}', {{ ii }} );">
-                <span class=" glyphicon glyphicon-trash"></span>
-                {{ _('Delete') }}
-            </button>
-            {% end %}
-             {% if userinfo %}
-            <button class="btn btn-primary btn-xs" data-toggle="collapse" data-target="#demo{{ii}}"><span class="glyphicon glyphicon-share-alt"></span>&nbsp;Reply</button>
-            {% end %}
-    </div>
-    </div>
-</div>
+                        {% if userinfo and userinfo.uid == reply.user_id %}
+                        <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal{{ii}}"><span
+                                class="glyphicon glyphicon-pencil"></span>&nbsp;Modify
+                        </button>
+                        {% end %}
+                        {% if userinfo and ( userinfo.uid == reply.user_id or userinfo.role[2] > '1') %}
+                        <button class="btn btn-xs btn-primary"
+                                onclick="reply_del('{{ reply.uid }}', {{ ii }} );">
+                            <span class=" glyphicon glyphicon-trash"></span>
+                            {{ _('Delete') }}
+                        </button>
+                        {% end %}
+                        {% if userinfo %}
+                        <button class="btn btn-primary btn-xs" data-toggle="collapse" data-target="#demo{{ii}}"><span
+                                class="glyphicon glyphicon-share-alt"></span>&nbsp;Reply
+                        </button>
+                        {% end %}
+                    </div>
+                </div>
+            </div>
         </div>
 
-        </div>
+    </div>
     <br>
-        <div id="reply_comment" class="clear"></div>
+        <div id="reply_comment" class="clearfix"></div>
         <div id="demo{{ii}}" class="collapse comment">
                     <form method="post" class="form-horizontal" id="comment_form">
                         <div class="form-group">
@@ -164,7 +169,7 @@
                                 </div>
                             </div>
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <a onclick="reply_modify('{{reply.uid}}','cnt_modify_reply{{ii}}','0');"
+                            <a onclick="reply_modify('{{reply.uid}}','cnt_modify_reply{{ii}}','0',{{ii}});"
                                data-dismiss="modal" class="btn btn-primary">Submit</a>
                         </form>
                     </div>
