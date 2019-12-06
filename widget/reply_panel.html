@@ -24,6 +24,9 @@
     .reply_button {
         padding: 10px auto
     }
+    .comment_list{
+        padding-left: 60px;
+    }
 
 </style>
 <form method="post" class="form-horizontal" id="reply_form">
@@ -114,7 +117,7 @@
 
     </div>
     <br>
-        <div id="reply_comment" class="clearfix"></div>
+
         <div id="demo{{ii}}" class="collapse comment">
                     <form method="post" class="form-horizontal" id="comment_form">
                         <div class="form-group">
@@ -139,9 +142,9 @@
                         </div>
                     </form>
                 </div>
-        <ul class="list-group">
+        <div class="comment_list">
             {% module comment_list(replyid = reply.uid,userinfo=userinfo) %}
-        </ul>
+        </div>
 
         <div class="modal fade" id="myModal{{ii}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
