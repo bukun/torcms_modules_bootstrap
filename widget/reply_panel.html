@@ -94,12 +94,12 @@
                         &nbsp;
 
                         {% if userinfo and userinfo.uid == reply.user_id %}
-                        <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal{{ii}}"><span
+                        <button class="btn btn-warning btn-xs" data-toggle="modal" data-target="#myModal{{ii}}"><span
                                 class="glyphicon glyphicon-pencil"></span>&nbsp;Modify
                         </button>
                         {% end %}
                         {% if userinfo and ( userinfo.uid == reply.user_id or userinfo.role[2] > '1') %}
-                        <button class="btn btn-xs btn-primary"
+                        <button class="btn btn-xs btn-danger"
                                 onclick="reply_del('{{ reply.uid }}', {{ ii }} );">
                             <span class=" glyphicon glyphicon-trash"></span>
                             {{ _('Delete') }}

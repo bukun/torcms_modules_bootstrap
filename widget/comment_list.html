@@ -15,13 +15,13 @@
                     <div class="listinfo_content" id="comment_id{{ rec.uid }}"> {% raw unescape(rec.cnt_html) %}</div>
                     <div class="reply_button pull-right">
                         {% if userinfo and userinfo.uid == rec.user_id %}
-                        <button class="btn btn-xs btn-primary" data-toggle="modal" data-target="#myModal{{rec.uid}}">
+                        <button class="btn btn-xs btn-warning" data-toggle="modal" data-target="#myModal{{rec.uid}}">
                             <span class="glyphicon glyphicon-pencil"></span>
                             &nbsp;Modify
                         </button>
                         {% end %}
                         {% if userinfo and ( userinfo.uid == rec.user_id or userinfo.role[2] > '1') %}
-                        <button class="btn btn-xs btn-primary"
+                        <button class="btn btn-xs btn-danger"
                                 onclick="reply_del_com('{{ rec.uid }}');">
                             <span class=" glyphicon glyphicon-trash"></span>
                             {{ _('Delete') }}
