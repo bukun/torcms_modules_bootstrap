@@ -106,7 +106,7 @@
                         </button>
                         {% end %}
                         {% if userinfo %}
-                        <button class="btn btn-primary btn-xs" data-toggle="collapse" data-target="#demo{{ii}}"><span
+                        <button class="btn btn-primary btn-xs" data-toggle="collapse" data-target="#reply_demo{{ii}}"><span
                                 class="glyphicon glyphicon-share-alt"></span>&nbsp;Reply
                         </button>
                         {% end %}
@@ -118,7 +118,7 @@
     </div>
     <br>
 
-    <div id="demo{{ii}}" class="collapse comment">
+    <div id="reply_demo{{ii}}" class="collapse comment">
                     <form method="post" class="form-horizontal" id="comment_form">
                         <div class="form-group">
                             <div class="col-sm-10">
@@ -132,12 +132,12 @@
                         <div class="form-group">
                             <div class="col-sm-6">
                                 <a id="btn_submit_comment{{ii}}" onclick="comment_it('{{uid}}','{{reply.uid}}','cnt_comment{{ii}}','btn_submit_comment{{ii}}','{{ii}}');"
-                                   class="btn btn-primary btn-small" data-toggle="collapse" data-target="#demo{{ii}}">
+                                   class="btn btn-primary btn-small" data-toggle="collapse" data-target="#reply_demo{{ii}}">
                                     {{ _('Submit') }}
                                 </a>
                             </div>
                             <div class="col-sm-6">
-                               <button type="button" class="btn btn-primary btn-sm" data-toggle="collapse" data-target="#demo{{ii}}">Cancel Reply</button>
+                               <button type="button" class="btn btn-primary btn-sm" data-toggle="collapse" data-target="#reply_demo{{ii}}">Cancel Reply</button>
                             </div>
                         </div>
                     </form>
