@@ -1,7 +1,6 @@
-{% set xx = 10000 %}
 {% for rec in recs%}
 <div class="clearfix"></div>
-<div id="del_reply_{{ xx }}">
+<div id="{{ rec.uid }}">
     <div class="reply_list">
         <div class="row">
             <div class="col-sm-2">{% module user_profile_by_id(rec.user_id) %}</div>
@@ -13,17 +12,17 @@
 
                 </div>
                 <div class="reply_cnt">
-                    <div class="listinfo_content" id="comment_id{{ xx }}"> {% raw unescape(rec.cnt_html) %}</div>
+                    <div class="listinfo_content" id="comment_id{{ rec.uid }}"> {% raw unescape(rec.cnt_html) %}</div>
                     <div class="reply_button pull-right">
                         {% if userinfo and userinfo.uid == rec.user_id %}
-                        <button class="btn btn-xs btn-primary" data-toggle="modal" data-target="#myModal{{xx}}">
+                        <button class="btn btn-xs btn-primary" data-toggle="modal" data-target="#myModal{{rec.uid}}">
                             <span class="glyphicon glyphicon-pencil"></span>
                             &nbsp;Modify
                         </button>
                         {% end %}
                         {% if userinfo and ( userinfo.uid == rec.user_id or userinfo.role[2] > '1') %}
                         <button class="btn btn-xs btn-primary"
-                                onclick="reply_del_com('{{ rec.uid }}',{{ xx }} );">
+                                onclick="reply_del_com('{{ rec.uid }}');">
                             <span class=" glyphicon glyphicon-trash"></span>
                             {{ _('Delete') }}
                         </button>
@@ -33,7 +32,7 @@
             </div>
         </div>
     </div>
-        <div class="modal fade" id="myModal{{xx}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        <div class="modal fade" id="myModal{{rec.uid}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
              aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -53,14 +52,14 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-10">
-                                <textarea rows="5" name="cnt_modify_reply{{xx}}" id="cnt_modify_reply{{xx}}"
+                                <textarea rows="5" name="cnt_modify_reply{{rec.uid}}" id="cnt_modify_reply{{rec.uid}}"
                                           class="form-control">
                                     {% module replycnt(replyid = rec.uid) %}
                                 </textarea>
                                 </div>
                             </div>
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <a onclick="reply_modify('{{rec.uid}}','cnt_modify_reply{{xx}}','1',{{xx}});" data-dismiss="modal"
+                            <a onclick="reply_modify('{{rec.uid}}','cnt_modify_reply{{rec.uid}}','1');" data-dismiss="modal"
                                class="btn btn-primary">Submit</a>
                         </form>
 
@@ -72,5 +71,4 @@
         </div>
 
 </div>
-{% set xx = xx + 1 %}
 {% end %}
