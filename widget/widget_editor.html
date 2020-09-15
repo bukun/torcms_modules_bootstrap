@@ -41,44 +41,6 @@
 
     }
 
-    function info_nullify(info_id) {
-
-        var AjaxUrl = "/post_j/nullify/" + info_id;
-        var rout = "{{kwd['router']}}";
-
-        $.getJSON(AjaxUrl, function (Json) {
-            var obj = eval(Json);
-            if (obj.nullify_info == 1) {
-
-
-                if (rout == 'tutorial') {
-                    router = "catalog";
-                    catid = obj.cat_slug;
-                }
-                else if (rout == 'info') {
-                    router = "filter";
-                    catid = obj.cat_id;
-                }
-                else {
-                    router = "list";
-                    catid = obj.cat_slug;
-                }
-
-                if (catid != '') {
-                    window.location.href = '/' + router + '/' + catid;
-                }
-                else {
-                    self.location = document.referrer;
-                }
-            }
-            else {
-
-            }
-
-        });
-
-
-    }
 
 </script>
 
@@ -117,10 +79,9 @@
     <a href="/post/_edit_kind/{{ kwd['uid']  }}" class="btn btn-xs btn-info">{{ _('Reclassify') }}</a>
 
     {% end %}
-    <a onclick="info_nullify('{{kwd['uid']}}')" class="btn btn-xs btn-warning">
-        <span class="glyphicon glyphicon-remove"></span>
-        {{ _('Nullify') }}
-    </a>
+
+
+    {% module info_nullify(uid = kwd['uid'],router=kwd['router'])%}
 
     <a onclick="info_del('{{kwd['uid']}}')" class="btn btn-xs btn-danger">
         <span class="glyphicon glyphicon-trash"></span>

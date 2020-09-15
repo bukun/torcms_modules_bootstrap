@@ -1,0 +1,34 @@
+<script>
+    function info_nullify(info_id, rout) {
+        var AjaxUrl = "/post_j/nullify/" + info_id;
+        var rout = rout;
+
+        $.getJSON(AjaxUrl, function (Json) {
+            var obj = eval(Json);
+            if (obj.nullify_info == 1) {
+                if (rout == 'tutorial') {
+                    router = "catalog";
+                    catid = obj.cat_slug;
+                }
+                else if (rout == 'info') {
+                    router = "filter";
+                    catid = obj.cat_id;
+                }
+                else {
+                    router = "list";
+                    catid = obj.cat_slug;
+                }
+                if (catid != '') {
+                    window.location.href = '/' + router + '/' + catid;
+                }
+                else {
+                    self.location = document.referrer;
+                }
+            }
+            else {
+            }
+        });
+    }
+</script>
+
+<a onclick="info_nullify('{{info_uid}}','{{info_router}}')" class="btn btn-xs btn-warning">Nullify</a>
