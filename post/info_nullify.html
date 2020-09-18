@@ -1,22 +1,39 @@
 <script>
-    function info_nullify(info_id, rout) {
+    function info_nullify(info_id, rout, rout_url) {
+
         var AjaxUrl = "/post_j/nullify/" + info_id;
         var rout = rout;
+        var rout_url = rout_url;
 
         $.getJSON(AjaxUrl, function (Json) {
             var obj = eval(Json);
             if (obj.nullify_info == 1) {
-                if (rout == 'tutorial') {
-                    router = "catalog";
-                    catid = obj.cat_slug;
-                }
-                else if (rout == 'info') {
+
+                if (rout_url == 'filter') {
+
                     router = "filter";
                     catid = obj.cat_id;
                 }
-                else {
+                else if (rout_url == 'list') {
                     router = "list";
                     catid = obj.cat_slug;
+                }
+                else if (rout_url == 'tutorial') {
+                    router = "catalog";
+                    catid = obj.cat_slug;
+                } else {
+                    if (rout == 'tutorial') {
+                        router = "catalog";
+                        catid = obj.cat_slug;
+                    }
+                    else if (rout == 'info') {
+                        router = "filter";
+                        catid = obj.cat_id;
+                    }
+                    else {
+                        router = "list";
+                        catid = obj.cat_slug;
+                    }
                 }
                 if (catid != '') {
                     window.location.href = '/' + router + '/' + catid;
@@ -25,10 +42,12 @@
                     self.location = document.referrer;
                 }
             }
+
             else {
             }
         });
     }
 </script>
 
-<a onclick="info_nullify('{{info_uid}}','{{info_router}}')" class="btn btn-xs btn-warning"><span class="glyphicon glyphicon-remove"></span> Nullify</a>
+<a onclick="info_nullify('{{info_uid}}','{{info_router}}','{{url}}')" class="btn btn-xs btn-warning">
+    <span class="glyphicon glyphicon-remove"></span> Nullify</a>
