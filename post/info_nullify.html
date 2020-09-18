@@ -2,8 +2,6 @@
     function info_nullify(info_id, rout, rout_url) {
 
         var AjaxUrl = "/post_j/nullify/" + info_id;
-        var rout = rout;
-        var rout_url = rout_url;
 
         $.getJSON(AjaxUrl, function (Json) {
             var obj = eval(Json);
