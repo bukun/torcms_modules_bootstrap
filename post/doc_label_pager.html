@@ -43,16 +43,17 @@
     <div class="col-sm-12">
         Go to <input id="changePage" type="text" size="1" maxlength="4" style="border:0; background: none; border-bottom: 1px solid #036; height: 20px "/> page
         <a href="#" id="btn5" class="btn btn-xs btn-primary">{{ _('Jump') }}</a>
+         <b id="fyts" class="red"></b>
         <script type="text/javascript">
             var page = '{{pager_num}}';
             $("#btn5").click(function changePage() {
                 curPage = document.getElementById("changePage").value * 1;
                 if (!/^[1-9]\d*$/.test(curPage)) {
-                    alert("Please enter a positive integer");
+                    $("#fyts").val("Please enter a positive integer");
                     return;
                 }
                 if (curPage > page) {
-                    alert("Exceed the data page");
+                    $("#fyts").val("Exceed the data page");
                     return;
                 }
                 window.location.href = "/label/{{ cat_slug }}/" + curPage ;
