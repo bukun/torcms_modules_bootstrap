@@ -17,7 +17,7 @@
                         {% if userinfo and userinfo.uid == rec.user_id %}
                         <button class="btn btn-xs btn-warning" data-toggle="modal" data-target="#myModal{{rec.uid}}">
                             <span class="glyphicon glyphicon-pencil"></span>
-                            &nbsp;Modify
+                            &nbsp;{{ _('Modify') }}
                         </button>
                         {% end %}
                         {% if userinfo and ( userinfo.uid == rec.user_id or userinfo.role[2] > '1') %}
@@ -38,14 +38,19 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="myModalLabel">Modify Comment</h4>
+                        <h4 class="modal-title" id="myModalLabel">{% if en %}Modify Comment{% else %} 修改评论 {% end %}</h4>
                     </div>
                     <div class="modal-body">
                         <form method="post" class="form-horizontal" id="reply_modify_form">
                             <div class="form-group">
                                 <div class="col-sm-10">
                                     <h5 class="red"><span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;
-                                        {{ _('Please comment with MarkDown syntax ') }}( {{ _(' at least 10 characters ') }})
+                                        {% if en %}
+                                        {{ _('Support for MarkDown syntax ') }}( {{ _(' at least 10 characters ') }})
+                                        {% else %}
+                                        支持MarkDown语法（最少10个字符）
+                                        {% end %}
+
                                     </h5>
 
                                 </div>
@@ -58,9 +63,9 @@
                                 </textarea>
                                 </div>
                             </div>
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-default btn-xs" data-dismiss="modal">Close</button>
                             <a onclick="reply_modify('{{rec.uid}}','cnt_modify_reply{{rec.uid}}','1');" data-dismiss="modal"
-                               class="btn btn-primary">Submit</a>
+                               class="btn btn-primary btn-xs">{{ _('Submit') }}</a>
                         </form>
 
                     </div>
